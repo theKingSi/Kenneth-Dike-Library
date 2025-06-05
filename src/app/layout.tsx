@@ -6,7 +6,7 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "UI Library - Discover Knowledge Beyond Limits",
+  title: "Kenneth Dike Library - Discover Knowledge Beyond Limits",
   description:
     "Step into a world where tradition meets innovation. Our library is more than books—it's your gateway to endless possibilities.",
   keywords: ["library", "university", "books", "research", "education", "digital resources"],

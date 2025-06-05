@@ -33,7 +33,7 @@ export default function Header() {
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               <div className="flex">
-                <img src="ui_logo.jpg" alt="Logo 1" className="w-8 h-8 object-contain" />
+                <img src="Ui_logo.png" alt="Logo 1" className="w-8 h-8 object-contain" />
                 <img src="/logo2.png" alt="Logo 2" className="w-6 h-6 object-contain -ml-px" />
               </div>
               <span className="text-xl font-bold text-gray-900">Kenneth Dike Library</span>

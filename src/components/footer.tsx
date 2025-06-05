@@ -39,11 +39,11 @@ export default function Footer() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-              <div className="flex">
-                <img src="ui_logo.jpg" alt="Logo 1" className="w-8 h-8 object-contain" />
-                <img src="/logo2.png" alt="Logo 2" className="w-8 h-8 object-contain -ml-px" />
-              </div>
-              <span className="text-xl font-bold text-gray-900">Kenneth Dike Library</span>
+            <div className="flex items-center space-x-2 mb-4">
+              <img src="/Ui_logo.png" alt="Logo 1" className="w-8 h-8 object-contain" />
+              <img src="/logo2.png" alt="Logo 2" className="w-8 h-8 object-contain" />
+              <span className="text-xl font-bold text-white ml-2">Kenneth Dike Library</span>
+            </div>
 
             <div className="space-y-4 mb-6">
               <div className="flex items-center space-x-3">
