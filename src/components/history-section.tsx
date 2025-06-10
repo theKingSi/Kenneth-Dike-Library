@@ -53,9 +53,11 @@ export default function HistorySection() {
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              Established in 1965, the UI Library has been the cornerstone of academic excellence for over five decades.
-              What began as a modest collection of 10,000 volumes has grown into a world-class research facility housing
-              over 2.5 million books, journals, and digital resources.
+               When John Harris, a New Zealander, arrived at the University of Ibadan in 1948 to serve as the Pioneer
+                Librarian, he described what he found as "a librarian's nightmare and a scene of book chaos." Yet from
+                this chaotic beginning, the Kenneth Dike Library has grown to become one of Africa's premier academic
+                libraries, housing over 2 million printed volumes and providing access to more than 10 million
+                electronic resources.
             </motion.p>
 
             <motion.p
@@ -65,9 +67,10 @@ export default function HistorySection() {
               transition={{ duration: 0.8, delay: 0.6 }}
               viewport={{ once: true }}
             >
-              Our library has witnessed the transformation of higher education, adapting from traditional card catalogs
-              to cutting-edge digital systems. Today, we serve over 45,000 students and faculty members, providing 24/7
-              access to knowledge and fostering innovation across all disciplines.
+                 The story of Kenneth Dike Library is one of transformation, resilience, and unwavering commitment to the
+                academic mission of the University of Ibadan. From its humble beginnings with 24 staff members to its
+                current status as a digitally advanced library system, it has remained true to Professor Kenneth
+                Mellanby's founding vision: "Whatever else we do I am determined that we have at least a good library."
             </motion.p>
 
             {/* Key Achievements */}

@@ -2,136 +2,141 @@
 
 import { useRef } from "react"
 import { motion, useScroll, useSpring, useInView } from "framer-motion"
-import { ArrowLeft, Calendar, User, Award, BookOpen, Clock, ChevronUp } from "lucide-react"
+import { ArrowLeft, Calendar, User, Award, BookOpen, Clock, ChevronUp, Database, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
 const librarians = [
   {
-    name: "Dr. Mercy Ariomerebi Iroaganachi",
-    period: "1965-1982",
-    title: "University Librarian",
-    achievement: "Established the library's foundation and initial collection of 10,000 volumes",
-    image: "Liba.jpg",
+    name: "Professor John Harris",
+    period: "1948-1968",
+    title: "Pioneer University Librarian",
+    achievement:
+      "New Zealander who established the foundation of the library, transforming it from 'a librarian's nightmare' to a functional academic library",
+    image: "pic8.jpg",
   },
   {
-    name: "Prof. James Richardson",
-    period: "1982-1995",
-    title: "Head Librarian",
-    achievement: "Introduced the first computerized catalog system and expanded to 500,000 volumes",
+    name: "Mr. Khalil Mahmud",
+    period: "1968-1972",
+    title: "Acting University Librarian",
+    achievement:
+      "Maintained library operations during a transitional period and continued the growth established by Harris",
+    image: "pic1.jpg",
+  },
+  {
+    name: "Mrs. T.O. Oderinde",
+    period: "1972-1987",
+    title: "University Librarian",
+    achievement: "Led the library through significant expansion during the 1970s and 1980s growth period",
     image: "pic2.jpg",
   },
   {
-    name: "Dr. Sarah Chen",
-    period: "1995-2010",
-    title: "Director of Library Services",
-    achievement: "Led the digital transformation and established online databases",
+    name: "Mrs. Grace Olufunmilayo Tamuno",
+    period: "1988-1998",
+    title: "University Librarian",
+    achievement: "Guided the library through modernization efforts and early automation initiatives",
     image: "pic3.jpg",
   },
   {
-    name: "Dr. Michael Rodriguez",
-    period: "2010-Present",
-    title: "Chief Library Officer",
-    achievement: "Modernized facilities and reached 2.5 million resources milestone",
-    image: "pic8.jpg",
-  },
-    {
-    name: "Dr. Margaret Thompson",
-    period: "1965-1982",
-    title: "Founding Head Librarian",
-    achievement: "Established the library's foundation and initial collection of 10,000 volumes",
-    image: "pic7.jpg",
-  },
-  {
-    name: "Prof. James Richardson",
-    period: "1982-1995",
-    title: "Head Librarian",
-    achievement: "Introduced the first computerized catalog system and expanded to 500,000 volumes",
+    name: "Mr. J.E. Ikem",
+    period: "1998-2003",
+    title: "University Librarian",
+    achievement: "Oversaw the transition into the digital age and early electronic resource acquisitions",
     image: "pic4.jpg",
   },
   {
-    name: "Dr. Sarah Chen",
-    period: "1995-2010",
-    title: "Director of Library Services",
-    achievement: "Led the digital transformation and established online databases",
+    name: "Dr. B.A. Oladele",
+    period: "2006-2016",
+    title: "University Librarian",
+    achievement:
+      "Led major digitization initiatives and launched the University of Ibadan Institutional Repository in 2014",
+    image: "pic5.jpg",
+  },
+  {
+    name: "Dr. Helen Komolafe-Opadeji",
+    period: "2016-2022",
+    title: "University Librarian",
+    achievement: "Advanced digital services and expanded electronic database subscriptions to over 10 million volumes",
     image: "pic6.jpg",
   },
   {
-    name: "Dr. Michael Rodriguez",
-    period: "2010-Present",
-    title: "Chief Library Officer",
-    achievement: "Modernized facilities and reached 2.5 million resources milestone",
-    image: "pic5.jpg",
+    name: "Mr. C.O. Ola",
+    period: "2022-2023",
+    title: "Acting University Librarian",
+    achievement: "Currently maintaining and expanding the library's digital transformation and modern services",
+    image: "pic7.jpg",
   },
 ]
 
 const milestones = [
-  { year: "1965", event: "UI Library founded with 10,000 books", icon: BookOpen },
-  { year: "1975", event: "First expansion completed, capacity doubled", icon: Award },
-  { year: "1985", event: "Computer catalog system implemented", icon: User },
-  { year: "1995", event: "Digital resources introduced", icon: Calendar },
-  { year: "2005", event: "24/7 study spaces opened", icon: BookOpen },
-  { year: "2015", event: "Major renovation and modernization", icon: Award },
-  { year: "2020", event: "Virtual services expanded during pandemic", icon: User },
-  { year: "2024", event: "2.5 million resources milestone reached", icon: Calendar },
+  { year: "1948", event: "Kenneth Dike Library established with University of Ibadan", icon: BookOpen },
+  { year: "1948", event: "24 staff members including University Librarian and Chief Cataloguer", icon: User },
+  { year: "1970s", event: "Considerable numerical growth in staff strength", icon: Award },
+  { year: "1980s", event: "Continued expansion and collection development", icon: Calendar },
+  { year: "1990s", event: "Early automation and modernization efforts", icon: Database },
+  { year: "2000s", event: "Introduction of electronic databases and digital resources", icon: Globe },
+  { year: "2014", event: "Launch of University of Ibadan Institutional Repository (UIIR)", icon: Award },
+  { year: "Present", event: "Over 2 million printed volumes and 10+ million electronic resources", icon: BookOpen },
 ]
 
 const eras = [
   {
     title: "The Foundation Era",
-    period: "1965-1980",
+    period: "1948-1968",
     description:
-      "The UI Library was born from a vision of academic excellence. Founded in 1965 by Dr. Margaret Thompson, our library began as a modest collection housed in a single building. With just 10,000 volumes and a staff of five, it served a growing university community of 3,000 students. The early years were marked by rapid growth and community support. Local donors contributed rare books and manuscripts, while faculty members helped curate specialized collections. By 1975, the first major expansion doubled our capacity and introduced dedicated research spaces.",
-    image: "img5.jpg",
-    quote: "A library is not a luxury but one of the necessities of life.",
-    quoteAuthor: "Dr. Margaret Thompson, Founding Head Librarian",
+      "The Kenneth Dike Library was established in 1948 alongside the University of Ibadan itself, making the library as old as the university. The Pioneer Librarian, John Harris, a New Zealander, responded to Professor Kenneth Mellanby's vision: 'Whatever else we do I am determined that we have at least a good library'. Harris described the situation he found on arrival as 'a librarian's nightmare and a scene of book chaos'. Starting with 24 staff members including the University Librarian, Chief Cataloguer, six library assistants, four messengers, one porter, and five student assistants, Harris transformed the chaotic situation into a functional academic library that would serve as the foundation for decades of growth.",
+    image: "img1.jpg",
+    quote: "Whatever else we do I am determined that we have at least a good library.",
+    quoteAuthor: "Professor Kenneth Mellanby, First Principal of University College, Ibadan",
     stats: [
-      { value: "10,000", label: "Initial Volumes" },
-      { value: "5", label: "Staff Members" },
-      { value: "3,000", label: "Students Served" },
+      { value: "1948", label: "Year Established" },
+      { value: "24", label: "Initial Staff" },
+      { value: "20", label: "Years of Leadership" },
     ],
   },
   {
-    title: "The Expansion Era",
-    period: "1980-1995",
+    title: "The Growth Era",
+    period: "1968-1987",
     description:
-      "Under the leadership of Prof. James Richardson, the library embraced significant growth and technological advancement. The introduction of computerized catalog systems in 1985 revolutionized how students and faculty accessed information. Gone were the days of manual card catalogs. This period saw the collection grow from 50,000 to over 500,000 volumes, with specialized collections in science, humanities, and social sciences. The library building was expanded twice during this era, adding study spaces, conference rooms, and the first computer lab for student use.",
+      "Under the successive leadership of Mr. Khalil Mahmud and Mrs. T.O. Oderinde, the library experienced its most significant period of expansion. The 1970s and 1980s witnessed considerable numerical growth in staff strength and collection development. This era established the library as a central and conspicuous entity on the University of Ibadan campus, following the global pattern of academic libraries occupying crucial positions in university systems. The library's collections grew substantially during this period, laying the groundwork for what would eventually become over two million volumes of printed materials including books, journals, dissertations, technical reports, and monographs.",
     image: "img2.jpg",
-    quote: "Technology is just a tool. In terms of getting information to people, it's how we use it that matters.",
-    quoteAuthor: "Prof. James Richardson, Head Librarian (1982-1995)",
+    quote:
+      "Libraries are crucial and important entities in University systems because they occupy central and conspicuous locations on campuses.",
+    quoteAuthor: "Kenneth Dike Library Historical Records",
     stats: [
-      { value: "500,000", label: "Volumes by 1995" },
-      { value: "2", label: "Building Expansions" },
-      { value: "15,000", label: "Students Served" },
+      { value: "19", label: "Years of Expansion" },
+      { value: "2", label: "Dynamic Leaders" },
+      { value: "1000s", label: "Books Added" },
+    ],
+  },
+  {
+    title: "The Modernization Era",
+    period: "1988-2003",
+    description:
+      "The leadership of Mrs. Grace Olufunmilayo Tamuno and Mr. J.E. Ikem marked the beginning of the library's modernization journey. This period saw the early stages of automation and the introduction of modern library management practices. The library began to adapt to changing technological landscapes while maintaining its core mission of supporting teaching, learning, and research mandates of the University. Economic challenges led to some reduction in staff strength due to adherence to National University Commission (NUC) norms, but the library's commitment to excellence remained unwavering. This era set the stage for the digital transformation that would follow.",
+    image: "img3.jpg",
+    quote:
+      "The library provides information resources aimed at supporting and enhancing teaching, learning, and research mandates.",
+    quoteAuthor: "Kenneth Dike Library Mission Statement",
+    stats: [
+      { value: "15", label: "Years of Progress" },
+      { value: "2", label: "Visionary Leaders" },
+      { value: "100%", label: "Commitment to TLR" },
     ],
   },
   {
     title: "The Digital Revolution",
-    period: "1995-2010",
+    period: "2004-Present",
     description:
-      "The 1990s brought the internet era, and Dr. Sarah Chen spearheaded our digital transformation. Online databases, electronic journals, and digital archives became integral parts of our services. By 2000, we had established partnerships with major academic publishers worldwide. This era saw the library transform from a traditional book repository to a hybrid information center. The introduction of 24/7 study spaces, digital literacy programs, and the first e-book collections fundamentally changed how the library served the university community.",
-    image: "img1.jpg",
-    quote: "The library is not just a repository of books but a gateway to the world's knowledge.",
-    quoteAuthor: "Dr. Sarah Chen, Director of Library Services (1995-2010)",
-    stats: [
-      { value: "1M+", label: "Volumes by 2010" },
-      { value: "50+", label: "Digital Databases" },
-      { value: "30,000", label: "Students Served" },
-    ],
-  },
-  {
-    title: "The Modern Era",
-    period: "2010-Present",
-    description:
-      "The 21st century has seen unprecedented growth and innovation. Dr. Michael Rodriguez's leadership has transformed the library into a modern learning hub. The 2015 renovation introduced collaborative spaces, maker labs, and state-of-the-art technology centers. Today, the UI Library serves over 45,000 users annually, houses 2.5 million resources, and operates 24/7 to support our diverse academic community. We continue to evolve, embracing new technologies while preserving our commitment to traditional scholarship.",
-    image: "img8.webp",
+      "The modern era of Kenneth Dike Library has been characterized by unprecedented digital transformation. Under the leadership of Dr. B.A. Oladele, Dr. Helen Komolafe-Opadeji, and current acting librarian Mr. C.O. Ola, the library has embraced the global shift from printed to electronic formats. The library now provides access to over 10 million electronic volumes through databases like JSTOR, RESEARCH4LIFE, and PROQUEST/Ebrary. The implementation of the University of Ibadan Integrated Library Software (UI-ILS) has enabled web-based access and inter-operability. The launch of the University of Ibadan Institutional Repository (UIIR) in 2014 has provided wider visibility to the university's intellectual outputs, raising its profile in global web metric rankings.",
+    image: "img4.jpg",
     quote:
-      "Libraries store the energy that fuels the imagination. They open up windows to the world and inspire us to explore and achieve.",
-    quoteAuthor: "Dr. Michael Rodriguez, Chief Library Officer (2010-Present)",
+      "Digitisation serves two major purposes: Preservation for posterity and delivery of virtual library services.",
+    quoteAuthor: "Kenneth Dike Library Digital Initiative",
     stats: [
-      { value: "2.5M+", label: "Resources Today" },
-      { value: "45,000+", label: "Annual Users" },
-      { value: "24/7", label: "Access" },
+      { value: "10M+", label: "Electronic Volumes" },
+      { value: "2M+", label: "Printed Materials" },
+      { value: "24/7", label: "Digital Access" },
     ],
   },
 ]
@@ -155,7 +160,7 @@ export default function HistoryPage() {
     <div className="min-h-screen bg-[#f8f9fa] font-serif">
       {/* Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-purple-600 origin-left z-50"
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-600 to-orange-600 origin-left z-50"
         style={{ scaleX }}
       />
 
@@ -173,7 +178,7 @@ export default function HistoryPage() {
               <span>Back to Home</span>
             </Button>
           </Link>
-          <div className="text-sm text-gray-500 italic">UI Library Archives</div>
+          <div className="text-sm text-gray-500 italic">Kenneth Dike Library Archives</div>
         </div>
       </motion.header>
 
@@ -186,19 +191,19 @@ export default function HistoryPage() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
-            The <span className="text-blue-600">Chronicle</span> of UI Library
+            The <span className="text-green-600">Chronicle</span> of Kenneth Dike Library
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light italic">
-            Six decades of academic excellence, innovation, and unwavering commitment to knowledge
+            Seven and a half decades of academic excellence at the University of Ibadan
           </p>
         </motion.div>
 
         {/* Newspaper-style Masthead */}
         <div className="border-y-4 border-gray-900 py-4 mb-12">
           <div className="flex justify-between items-center">
-            <div className="text-sm uppercase tracking-widest">Vol. 59, No. 1</div>
-            <div className="text-sm uppercase tracking-widest">Est. 1965</div>
-            <div className="text-sm uppercase tracking-widest">UI Library Historical Society</div>
+            <div className="text-sm uppercase tracking-widest">Vol. 76, No. 1</div>
+            <div className="text-sm uppercase tracking-widest">Est. 1948</div>
+            <div className="text-sm uppercase tracking-widest">University of Ibadan Historical Society</div>
           </div>
         </div>
 
@@ -211,19 +216,21 @@ export default function HistoryPage() {
         >
           <div className="md:col-span-2">
             <h2 className="text-3xl font-bold mb-6 leading-tight">
-              From Humble Beginnings to Digital Excellence: The Remarkable Journey of UI Library
+              From "Librarian's Nightmare" to Digital Excellence: The Remarkable Journey of Kenneth Dike Library
             </h2>
             <div className="text-lg leading-relaxed space-y-4">
-              <p className="first-letter:text-5xl first-letter:font-bold first-letter:text-blue-600 first-letter:mr-2 first-letter:float-left">
-                When the doors of UI Library first opened in 1965, few could have imagined the remarkable journey that
-                would unfold over the next six decades. What began as a modest collection of 10,000 books has
-                transformed into one of the nation's premier academic libraries, housing over 2.5 million resources and
-                serving as an intellectual hub for generations of scholars.
+              <p className="first-letter:text-5xl first-letter:font-bold first-letter:text-green-600 first-letter:mr-2 first-letter:float-left">
+                When John Harris, a New Zealander, arrived at the University of Ibadan in 1948 to serve as the Pioneer
+                Librarian, he described what he found as "a librarian's nightmare and a scene of book chaos." Yet from
+                this chaotic beginning, the Kenneth Dike Library has grown to become one of Africa's premier academic
+                libraries, housing over 2 million printed volumes and providing access to more than 10 million
+                electronic resources.
               </p>
               <p>
-                The story of UI Library is one of vision, adaptation, and unwavering commitment to knowledge. Through
-                changing technologies, expanding campus needs, and evolving educational paradigms, the library has
-                remained at the heart of the university's academic mission.
+                The story of Kenneth Dike Library is one of transformation, resilience, and unwavering commitment to the
+                academic mission of the University of Ibadan. From its humble beginnings with 24 staff members to its
+                current status as a digitally advanced library system, it has remained true to Professor Kenneth
+                Mellanby's founding vision: "Whatever else we do I am determined that we have at least a good library."
               </p>
             </div>
           </div>
@@ -234,12 +241,12 @@ export default function HistoryPage() {
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <img
-                src="img4.jpg"
-                alt="Original Library Building 1965"
+                src="img2.jpg"
+                alt="Kenneth Dike Library Building 1948"
                 className="w-full h-full object-cover rounded-lg shadow-lg"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white p-3 text-sm rounded-b-lg">
-                The original UI Library building as it appeared in 1965
+                The Kenneth Dike Library as it appeared in its early years at University of Ibadan
               </div>
             </motion.div>
           </div>
@@ -262,7 +269,7 @@ export default function HistoryPage() {
           <div className="max-w-4xl mx-auto">
             {milestones.map((milestone, index) => (
               <motion.div
-                key={milestone.year}
+                key={`${milestone.year}-${index}`}
                 className="flex items-center mb-8 last:mb-0"
                 initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -270,9 +277,9 @@ export default function HistoryPage() {
                 viewport={{ once: true }}
               >
                 <div className="flex-shrink-0 w-24 text-right mr-8">
-                  <span className="text-2xl font-bold text-blue-600">{milestone.year}</span>
+                  <span className="text-2xl font-bold text-green-600">{milestone.year}</span>
                 </div>
-                <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-8">
+                <div className="flex-shrink-0 w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-8">
                   <milestone.icon className="h-6 w-6 text-white" />
                 </div>
                 <div className="flex-1 bg-white rounded-xl p-6 shadow-lg">
@@ -283,49 +290,108 @@ export default function HistoryPage() {
           </div>
         </motion.section>
 
-        {/* Librarians Gallery */}
+        {/* Librarians Gallery with Auto-Scroll */}
         <motion.section
-  className="mb-20"
-  initial={{ opacity: 0, y: 50 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8 }}
-  viewport={{ once: true }}
->
-  <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Distinguished Librarians</h2>
-
-  <div className="overflow-hidden relative">
-    <motion.div
-      className="flex gap-8 w-max"
-      animate={{ x: ['0%', '-50%'] }}
-      transition={{
-        repeat: Infinity,
-        duration: 100,
-        ease: "linear",
-      }}
-    >
-      {[...librarians, ...librarians].map((librarian, index) => (
-        <div
-          key={index}
-          className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 flex-shrink-0 w-72"
+          className="mb-20"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
         >
-          <div className="flex flex-col items-center text-center">
-            <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-4 border-blue-100">
-              <img
-                src={librarian.image || "/placeholder.svg"}
-                alt={librarian.name}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-1">{librarian.name}</h3>
-            <p className="text-blue-600 font-semibold mb-2">{librarian.title}</p>
-            <p className="text-sm text-gray-500 mb-3">{librarian.period}</p>
-            <p className="text-gray-700 leading-relaxed text-sm">{librarian.achievement}</p>
+          <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Distinguished University Librarians</h2>
+
+          {/* Auto-scrolling container */}
+          <div className="relative overflow-hidden">
+            {/* Gradient overlays for smooth edges */}
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#f8f9fa] to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#f8f9fa] to-transparent z-10 pointer-events-none"></div>
+
+            {/* Scrolling content */}
+            <motion.div
+              className="flex gap-8"
+              animate={{
+                x: [0, -100 * librarians.length],
+              }}
+              transition={{
+                x: {
+                  repeat: Number.POSITIVE_INFINITY,
+                  repeatType: "loop",
+                  duration: 40,
+                  ease: "linear",
+                },
+              }}
+              style={{
+                width: `${librarians.length * 2 * 320}px`,
+              }}
+            >
+              {/* First set of librarians */}
+              {librarians.map((librarian, index) => (
+                <LibrarianCard key={`first-${index}`} librarian={librarian} index={index} />
+              ))}
+              {/* Duplicate set for seamless loop */}
+              {librarians.map((librarian, index) => (
+                <LibrarianCard key={`second-${index}`} librarian={librarian} index={index} />
+              ))}
+            </motion.div>
           </div>
-        </div>
-      ))}
-    </motion.div>
-  </div>
-</motion.section>
+
+          {/* Pause on hover instruction */}
+          <motion.p
+            className="text-center text-gray-500 text-sm mt-6 italic"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            viewport={{ once: true }}
+          >
+            Hover over any card to pause the scroll and learn more about each distinguished librarian
+          </motion.p>
+        </motion.section>
+
+        {/* Current Services Section */}
+        <motion.section
+          className="mb-20 py-16 bg-gradient-to-br from-green-50 to-orange-50 rounded-2xl"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Modern Services & Collections</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <motion.div
+              className="bg-white rounded-xl p-6 shadow-lg"
+              whileHover={{ y: -5, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              <Database className="h-12 w-12 text-green-600 mb-4" />
+              <h3 className="text-xl font-bold mb-3">Electronic Databases</h3>
+              <p className="text-gray-600">
+                Access to JSTOR, RESEARCH4LIFE, PROQUEST/Ebrary and over 10 million electronic volumes
+              </p>
+            </motion.div>
+            <motion.div
+              className="bg-white rounded-xl p-6 shadow-lg"
+              whileHover={{ y: -5, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              <Globe className="h-12 w-12 text-orange-600 mb-4" />
+              <h3 className="text-xl font-bold mb-3">UI-ILS System</h3>
+              <p className="text-gray-600">
+                University of Ibadan Integrated Library Software with web interface and OPAC access
+              </p>
+            </motion.div>
+            <motion.div
+              className="bg-white rounded-xl p-6 shadow-lg"
+              whileHover={{ y: -5, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              <Award className="h-12 w-12 text-blue-600 mb-4" />
+              <h3 className="text-xl font-bold mb-3">Institutional Repository</h3>
+              <p className="text-gray-600">
+                UIIR launched in 2014 to showcase University of Ibadan's intellectual outputs globally
+              </p>
+            </motion.div>
+          </div>
+        </motion.section>
 
         {/* Final Quote */}
         <motion.div
@@ -335,13 +401,14 @@ export default function HistoryPage() {
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <div className="text-6xl text-blue-600 mb-6">"</div>
+          <div className="text-6xl text-green-600 mb-6">"</div>
           <p className="text-2xl md:text-3xl italic text-gray-700 mb-6">
-            The UI Library stands as a testament to our enduring belief that knowledge is the foundation of progress. As
-            we look to the future, we remain committed to our mission of connecting minds to ideas, preserving our
-            intellectual heritage, and fostering the discoveries of tomorrow.
+            The Kenneth Dike Library stands as a testament to our enduring commitment to providing timely, current and
+            accurate information in support of the teaching, learning, and research mandate of the University of Ibadan.
+            From chaos to excellence, we continue to preserve knowledge for posterity while delivering cutting-edge
+            virtual library services.
           </p>
-          <p className="text-lg font-semibold text-gray-900">— Dr. Michael Rodriguez, Chief Library Officer</p>
+          <p className="text-lg font-semibold text-gray-900">— Kenneth Dike Library Legacy Statement</p>
         </motion.div>
       </div>
 
@@ -349,7 +416,8 @@ export default function HistoryPage() {
       <div className="bg-gray-100 py-8 border-t border-gray-200">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-gray-600 text-sm">
-            © {new Date().getFullYear()} UI Library Historical Archives. All rights reserved.
+            © {new Date().getFullYear()} Kenneth Dike Library Historical Archives. University of Ibadan. All rights
+            reserved.
           </p>
         </div>
       </div>
@@ -357,7 +425,7 @@ export default function HistoryPage() {
       {/* Scroll to Top Button */}
       <motion.button
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg z-50"
+        className="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-green-600 text-white flex items-center justify-center shadow-lg z-50"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         initial={{ opacity: 0 }}
@@ -386,7 +454,7 @@ function EraArticle({ era, index }: { era: any; index: number }) {
         <div className={`space-y-6 ${index % 2 === 1 ? "md:pl-12" : "md:pr-12"}`}>
           <div>
             <motion.div
-              className="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full mb-4"
+              className="inline-block px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full mb-4"
               initial={{ opacity: 0, x: -20 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -415,7 +483,7 @@ function EraArticle({ era, index }: { era: any; index: number }) {
           </motion.div>
 
           <motion.div
-            className="bg-gray-100 p-6 rounded-xl italic text-gray-700 border-l-4 border-blue-600 my-8"
+            className="bg-gray-100 p-6 rounded-xl italic text-gray-700 border-l-4 border-green-600 my-8"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.5 }}
@@ -432,7 +500,7 @@ function EraArticle({ era, index }: { era: any; index: number }) {
           >
             {era.stats.map((stat: any, i: number) => (
               <div key={i} className="text-center p-4 bg-white rounded-lg shadow-sm">
-                <div className="text-2xl font-bold text-blue-600">{stat.value}</div>
+                <div className="text-2xl font-bold text-green-600">{stat.value}</div>
                 <div className="text-xs text-gray-600 uppercase tracking-wider">{stat.label}</div>
               </div>
             ))}
@@ -461,7 +529,7 @@ function EraArticle({ era, index }: { era: any; index: number }) {
           </div>
 
           <motion.div
-            className="absolute -bottom-6 -right-6 w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-lg"
+            className="absolute -bottom-6 -right-6 w-16 h-16 bg-green-600 rounded-full flex items-center justify-center text-white shadow-lg"
             animate={{
               rotate: [0, 10, 0],
               scale: [1, 1.1, 1],
@@ -477,5 +545,68 @@ function EraArticle({ era, index }: { era: any; index: number }) {
         </motion.div>
       </div>
     </motion.article>
+  )
+}
+
+function LibrarianCard({ librarian, index }: { librarian: any; index: number }) {
+  return (
+    <motion.div
+      className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 flex-shrink-0 w-80 group"
+      whileHover={{
+        y: -10,
+        scale: 1.05,
+        transition: { type: "spring", stiffness: 300, damping: 20 },
+      }}
+      onHoverStart={() => {
+        const scrollContainer = document.querySelector("[data-scroll-container]") as HTMLElement
+        if (scrollContainer) {
+          scrollContainer.style.animationPlayState = "paused"
+        }
+      }}
+      onHoverEnd={() => {
+        const scrollContainer = document.querySelector("[data-scroll-container]") as HTMLElement
+        if (scrollContainer) {
+          scrollContainer.style.animationPlayState = "running"
+        }
+      }}
+    >
+      <div className="flex flex-col items-center text-center">
+        <motion.div
+          className="w-32 h-32 rounded-full overflow-hidden mb-4 border-4 border-green-100 group-hover:border-green-400 transition-colors duration-300"
+          whileHover={{
+            scale: 1.1,
+            rotate: [0, -5, 5, 0],
+            transition: { type: "spring", stiffness: 300, damping: 20 },
+          }}
+        >
+          <img
+            src={librarian.image || "/placeholder.svg"}
+            alt={librarian.name}
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+        <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-green-600 transition-colors duration-300">
+          {librarian.name}
+        </h3>
+        <p className="text-green-600 font-semibold mb-2">{librarian.title}</p>
+        <p className="text-sm text-gray-500 mb-3 font-medium">{librarian.period}</p>
+        <p className="text-gray-700 leading-relaxed text-sm">{librarian.achievement}</p>
+
+        {/* Floating badge */}
+        <motion.div
+          className="absolute top-4 right-4 px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          animate={{
+            y: [0, -3, 0],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "easeInOut",
+          }}
+        >
+          Pioneer
+        </motion.div>
+      </div>
+    </motion.div>
   )
 }

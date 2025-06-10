@@ -12,8 +12,8 @@ export default function Header() {
   const navItems = [
     { name: "Home", href: "/" },
     { name: "History", href: "/history" },
-    { name: "E-Resources", href: "#E-Resources" }, 
-    { name: "Contact", href: "#contact" },  
+   { name: "E-resources", href: "/e-resources" },
+    { name: "Contact", href: "#contact" },
   ]
 
   return (
@@ -23,40 +23,39 @@ export default function Header() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/">
+          <Link href="/" className="flex items-center space-x-2">
             <motion.div
-              className="flex items-center space-x-2 cursor-pointer"
+              className="flex items-center cursor-pointer"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <div className="flex">
-                <img src="Ui_logo.png" alt="Logo 1" className="w-8 h-8 object-contain" />
-                <img src="/logo2.png" alt="Logo 2" className="w-6 h-6 object-contain -ml-px" />
+              <div className="flex items-center space-x-1">
+                <img src="/ui_logo.png" alt="Logo 1" className="w-8 h-8 object-contain" />
+                <img src="/kdl_logo.png" alt="Logo 2" className="w-6 h-6 object-contain" />
               </div>
-              <span className="text-xl font-bold text-gray-900">Kenneth Dike Library</span>
+              <span className="ml-2 text-lg sm:text-xl font-bold text-gray-900">Kenneth Dike Library</span>
             </motion.div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6 lg:space-x-10">
             {navItems.map((item) => (
-              <motion.div key={item.name}>
-                <Link
-                  href={item.href}
-                  className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
+              >
+                <motion.span
+                  whileHover={{ y: -2 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  className="block"
                 >
-                  <motion.span
-                    whileHover={{ y: -2 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    className="block"
-                  >
-                    {item.name}
-                  </motion.span>
-                </Link>
-              </motion.div>
+                  {item.name}
+                </motion.span>
+              </Link>
             ))}
           </nav>
 
@@ -68,7 +67,7 @@ export default function Header() {
           </div>
 
           {/* Mobile Menu Button */}
-          <Button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
         </div>
@@ -96,8 +95,10 @@ export default function Header() {
                     </motion.span>
                   </Link>
                 ))}
-                <div className="flex flex-col space-y-2 pt-4 border-t border-gray-200">
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white justify-start">Get Started</Button>
+                <div className="pt-4 border-t border-gray-200">
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full justify-center">
+                    Get Started
+                  </Button>
                 </div>
               </div>
             </motion.nav>
