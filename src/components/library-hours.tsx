@@ -48,8 +48,16 @@ export default function LibraryHours() {
 
               <div className="space-y-4">
                 <div className="flex justify-between items-center py-3 border-b border-gray-100">
-                  <span className="font-medium text-gray-900">Main Library</span>
+                  <span className="font-medium text-gray-900">Monday - Friday</span>
                   <span className="text-blue-600 font-semibold">8:00 AM - 10:00 PM</span>
+                </div>
+                 <div className="flex justify-between items-center py-3 border-b border-gray-100">
+                  <span className="font-medium text-gray-900">Saturday</span>
+                  <span className="text-blue-600 font-semibold">8:00 AM - 1:00 PM</span>
+                </div>
+                 <div className="flex justify-between items-center py-3 border-b border-gray-100">
+                  <span className="font-medium text-gray-900">Sunday</span>
+                  <span className="text-blue-600 font-semibold">5:00 PM - 10:00 PM</span>
                 </div>
                 <div className="flex justify-between items-center py-3 border-b border-gray-100">
                   <span className="font-medium text-gray-900">Study Rooms</span>
@@ -101,7 +109,7 @@ export default function LibraryHours() {
                 </div>
               </div>
 
-              <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">View Full Schedule</Button>
+              <Button className="w-full bg-blue-600 hover:bg-blue-700 cursor-pointer text-white">View Full Schedule</Button>
             </motion.div>
           </div>
         </div>

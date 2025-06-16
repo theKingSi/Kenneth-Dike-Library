@@ -4,69 +4,54 @@ import { useRef } from "react"
 import { motion, useScroll, useSpring, useInView } from "framer-motion"
 import { ArrowLeft, Calendar, User, Award, BookOpen, Clock, ChevronUp, Database, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Moving from "@/components/moving"
 import Link from "next/link"
 
 const librarians = [
   {
-    name: "Professor John Harris",
-    period: "1948-1968",
-    title: "Pioneer University Librarian",
-    achievement:
-      "New Zealander who established the foundation of the library, transforming it from 'a librarian's nightmare' to a functional academic library",
-    image: "pic8.jpg",
-  },
-  {
-    name: "Mr. Khalil Mahmud",
-    period: "1968-1972",
-    title: "Acting University Librarian",
-    achievement:
-      "Maintained library operations during a transitional period and continued the growth established by Harris",
-    image: "pic1.jpg",
-  },
-  {
-    name: "Mrs. T.O. Oderinde",
-    period: "1972-1987",
+    name: "DR. MERCY ARIOMEREBI IROAGANACHI",
     title: "University Librarian",
-    achievement: "Led the library through significant expansion during the 1970s and 1980s growth period",
-    image: "pic2.jpg",
+    section: "",
+    image: "Liba.jpg",
   },
   {
-    name: "Mrs. Grace Olufunmilayo Tamuno",
-    period: "1988-1998",
-    title: "University Librarian",
-    achievement: "Guided the library through modernization efforts and early automation initiatives",
-    image: "pic3.jpg",
+    name: "MR. C. O. OLA",
+    title: "Deputy University Librarian",
+    section: "",
+    image: "DPT1.png",
   },
   {
-    name: "Mr. J.E. Ikem",
-    period: "1998-2003",
-    title: "University Librarian",
-    achievement: "Oversaw the transition into the digital age and early electronic resource acquisitions",
-    image: "pic4.jpg",
+    name: "DR. BEATRICE A. FABUNMI",
+    title: "Deputy University Librarian",
+    section: "Readers Section",
+    image: "DPT6.png",
   },
   {
-    name: "Dr. B.A. Oladele",
-    period: "2006-2016",
-    title: "University Librarian",
-    achievement:
-      "Led major digitization initiatives and launched the University of Ibadan Institutional Repository in 2014",
-    image: "pic5.jpg",
+    name: "DR. ADETOUN A. OYELUDE",
+    title: "Deputy University Librarian",
+    section: "Technical Services",
+    image: "DPT7.png",
   },
   {
-    name: "Dr. Helen Komolafe-Opadeji",
-    period: "2016-2022",
-    title: "University Librarian",
-    achievement: "Advanced digital services and expanded electronic database subscriptions to over 10 million volumes",
-    image: "pic6.jpg",
+    name: "DR. REUBEN A. OJO",
+    title: "Deputy mUniversity Librarian",
+    section: "ICT & Systems",
+    image: "DPT8.png",
   },
   {
-    name: "Mr. C.O. Ola",
-    period: "2022-2023",
-    title: "Acting University Librarian",
-    achievement: "Currently maintaining and expanding the library's digital transformation and modern services",
-    image: "pic7.jpg",
+    name: "MRS. BOLARINWA M. ADEYEMI",
+    title: "Deputy University Librarian",
+    section: "Special Collections",
+    image: "DPT4.png",
   },
-]
+  {
+    name: "DR. GRACE A. AJUWON",
+    title: "Deputy University Librarian",
+    section: "Medical Library",
+    image: "DPT5.PNG",
+  },
+];
+
 
 const milestones = [
   { year: "1948", event: "Kenneth Dike Library established with University of Ibadan", icon: BookOpen },
@@ -173,7 +158,7 @@ export default function HistoryPage() {
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <Link href="/">
-            <Button variant="ghost" className="flex items-center gap-2">
+            <Button variant="ghost" className="flex items-center gap-2 cursor-pointer">
               <ArrowLeft className="h-4 w-4" />
               <span>Back to Home</span>
             </Button>
@@ -289,64 +274,7 @@ export default function HistoryPage() {
             ))}
           </div>
         </motion.section>
-
-        {/* Librarians Gallery with Auto-Scroll */}
-        <motion.section
-          className="mb-20"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Distinguished University Librarians</h2>
-
-          {/* Auto-scrolling container */}
-          <div className="relative overflow-hidden">
-            {/* Gradient overlays for smooth edges */}
-            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#f8f9fa] to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#f8f9fa] to-transparent z-10 pointer-events-none"></div>
-
-            {/* Scrolling content */}
-            <motion.div
-              className="flex gap-8"
-              animate={{
-                x: [0, -100 * librarians.length],
-              }}
-              transition={{
-                x: {
-                  repeat: Number.POSITIVE_INFINITY,
-                  repeatType: "loop",
-                  duration: 40,
-                  ease: "linear",
-                },
-              }}
-              style={{
-                width: `${librarians.length * 2 * 320}px`,
-              }}
-            >
-              {/* First set of librarians */}
-              {librarians.map((librarian, index) => (
-                <LibrarianCard key={`first-${index}`} librarian={librarian} index={index} />
-              ))}
-              {/* Duplicate set for seamless loop */}
-              {librarians.map((librarian, index) => (
-                <LibrarianCard key={`second-${index}`} librarian={librarian} index={index} />
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Pause on hover instruction */}
-          <motion.p
-            className="text-center text-gray-500 text-sm mt-6 italic"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            viewport={{ once: true }}
-          >
-            Hover over any card to pause the scroll and learn more about each distinguished librarian
-          </motion.p>
-        </motion.section>
-
+<Moving />
         {/* Current Services Section */}
         <motion.section
           className="mb-20 py-16 bg-gradient-to-br from-green-50 to-orange-50 rounded-2xl"
@@ -432,7 +360,7 @@ export default function HistoryPage() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
       >
-        <ChevronUp className="h-6 w-6" />
+        <ChevronUp className="h-6 w-6 cursor-pointer" />
       </motion.button>
     </div>
   )

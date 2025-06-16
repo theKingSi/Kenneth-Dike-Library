@@ -184,7 +184,7 @@ export default function Hero() {
                 <Link href={currentSlideData.ctaLink}>
                   <Button
                     size="lg"
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group"
+                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
                   >
                     {currentSlideData.cta}
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -193,7 +193,7 @@ export default function Hero() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white/30 text-white hover:bg-white/10 px-8 py-4 rounded-2xl backdrop-blur-sm"
+                  className="border-white/30 text-white hover:bg-white/10 px-8 py-4 rounded-2xl backdrop-blur-sm cursor-pointer"
                 >
                   <Users className="mr-2 h-5 w-5" />
                   Join Community
@@ -227,12 +227,12 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Navigation Controls - Hidden by default, shown on hover of entire section */}
+      {/* Navigation Controls */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <div className="flex items-center space-x-4">
           <motion.button
             onClick={prevSlide}
-            className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
+            className="w-12 h-12 rounded-full bg-white/10 cursor-pointer backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
@@ -243,7 +243,7 @@ export default function Hero() {
               <motion.button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`w-3 h-3 rounded-full transition-all cursor-pointer duration-300 ${
                   index === currentSlide ? "bg-white scale-125" : "bg-white/40 hover:bg-white/60"
                 }`}
                 whileHover={{ scale: 1.2 }}
@@ -253,7 +253,7 @@ export default function Hero() {
           </div>
           <motion.button
             onClick={nextSlide}
-            className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
+            className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center cursor-pointer text-white hover:bg-white/20 transition-all duration-300"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >

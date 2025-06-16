@@ -3,60 +3,46 @@ import { motion } from 'framer-motion'
 
 const librarians = [
   {
-    name: "Dr. Mercy Ariomerebi Iroaganachi",
-    period: "1965-1982",
+    name: "DR. MERCY ARIOMEREBI IROAGANACHI",
     title: "University Librarian",
-    achievement: "Established the library's foundation and initial collection of 10,000 volumes",
+    section: "",
     image: "Liba.jpg",
   },
   {
-    name: "Prof. James Richardson",
-    period: "1982-1995",
-    title: "Head Librarian",
-    achievement: "Introduced the first computerized catalog system and expanded to 500,000 volumes",
-    image: "pic2.jpg",
+    name: "MR. C. O. OLA",
+    title: "Deputy University Librarian",
+    section: "",
+    image: "DPT1.png",
   },
   {
-    name: "Dr. Sarah Chen",
-    period: "1995-2010",
-    title: "Director of Library Services",
-    achievement: "Led the digital transformation and established online databases",
-    image: "pic3.jpg",
+    name: "DR. BEATRICE A. FABUNMI",
+    title: "Deputy University Librarian",
+    section: "Readers Section",
+    image: "DPT6.png",
   },
   {
-    name: "Dr. Michael Rodriguez",
-    period: "2010-Present",
-    title: "Chief Library Officer",
-    achievement: "Modernized facilities and reached 2.5 million resources milestone",
-    image: "pic8.jpg",
+    name: "DR. ADETOUN A. OYELUDE",
+    title: "Deputy University Librarian",
+    section: "Technical Services",
+    image: "DPT7.png",
   },
   {
-    name: "Dr. Margaret Thompson",
-    period: "1965-1982",
-    title: "Founding Head Librarian",
-    achievement: "Established the library's foundation and initial collection of 10,000 volumes",
-    image: "pic7.jpg",
+    name: "DR. REUBEN A. OJO",
+    title: "Deputy mUniversity Librarian",
+    section: "ICT & Systems",
+    image: "DPT8.png",
   },
   {
-    name: "Prof. James Richardson",
-    period: "1982-1995",
-    title: "Head Librarian",
-    achievement: "Introduced the first computerized catalog system and expanded to 500,000 volumes",
-    image: "pic4.jpg",
+    name: "MRS. BOLARINWA M. ADEYEMI",
+    title: "Deputy University Librarian",
+    section: "Special Collections",
+    image: "DPT4.png",
   },
   {
-    name: "Dr. Sarah Chen",
-    period: "1995-2010",
-    title: "Director of Library Services",
-    achievement: "Led the digital transformation and established online databases",
-    image: "pic6.jpg",
-  },
-  {
-    name: "Dr. Michael Rodriguez",
-    period: "2010-Present",
-    title: "Chief Library Officer",
-    achievement: "Modernized facilities and reached 2.5 million resources milestone",
-    image: "pic5.jpg",
+    name: "DR. GRACE A. AJUWON",
+    title: "Deputy University Librarian",
+    section: "Medical Library",
+    image: "DPT5.PNG",
   },
 ];
 
@@ -98,8 +84,7 @@ const Moving = () => {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-1">{librarian.name}</h3>
                 <p className="text-blue-600 font-semibold mb-2">{librarian.title}</p>
-                <p className="text-sm text-gray-500 mb-3">{librarian.period}</p>
-                <p className="text-gray-700 leading-relaxed text-sm">{librarian.achievement}</p>
+                 <p className="text-xs text-gray-500 italic">{librarian.section}</p>
               </div>
             </div>
           ))}

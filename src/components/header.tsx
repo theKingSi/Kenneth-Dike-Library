@@ -62,7 +62,7 @@ export default function Header() {
           {/* Auth Buttons - Desktop */}
           <div className="hidden md:flex items-center space-x-4">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">Get Started</Button>
+              <Button className="bg-blue-600 hover:bg-blue-700 cursor-pointer text-white">Get Started</Button>
             </motion.div>
           </div>
 
@@ -96,7 +96,7 @@ export default function Header() {
                   </Link>
                 ))}
                 <div className="pt-4 border-t border-gray-200">
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full justify-center">
+                  <Button className="bg-blue-600 hover:bg-blue-700 cursor-pointer text-white w-full justify-center">
                     Get Started
                   </Button>
                 </div>
