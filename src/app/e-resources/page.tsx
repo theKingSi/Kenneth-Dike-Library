@@ -6,6 +6,7 @@ import { ArrowLeft, Search, Filter, ExternalLink, BookOpen, Users, Globe, Databa
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
+import Header from "@/components/header"
 
 const databases = [
     {
@@ -403,22 +404,7 @@ export default function EResourcesPage() {
             />
 
             {/* Header */}
-            <motion.header
-                className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-40"
-                initial={{ y: -100 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.5 }}
-            >
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-                    <Link href="/">
-                        <Button variant="ghost" className="flex items-center gap-2">
-                            <ArrowLeft className="h-4 w-4" />
-                            <span>Back to Home</span>
-                        </Button>
-                    </Link>
-                    <div className="text-sm text-gray-500 italic">Kenneth Dike Library E-Resources</div>
-                </div>
-            </motion.header>
+           <Header />
 
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 {/* Hero Section */}
