@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   keywords: ["library", "university", "books", "research", "education", "digital resources"],
   authors: [{ name: "UI Library" }],
   openGraph: {
-    title: "UI Library - Discover Knowledge Beyond Limits",
+    title: "Kenneth Dike Library - Discover Knowledge Beyond Limits",
     description:
       "Step into a world where tradition meets innovation. Our library is more than books—it's your gateway to endless possibilities.",
     type: "website",
