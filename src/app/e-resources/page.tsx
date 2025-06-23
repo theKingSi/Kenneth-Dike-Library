@@ -63,7 +63,7 @@ const databases = [
         logo: "ERIC.png",
         url: "https://eric.ed.gov/",
         color: "from-indigo-500 to-indigo-600",
-        stats: { articles: "1.6M+", journals: "500+", reports: "300,000+" },
+        stats: { articles: "1.6M+", journals: "500+", reports: "300k+" },
     },
 
     {
@@ -91,7 +91,7 @@ const databases = [
         logo: "arX.png",
         url: "https://arxiv.org",
         color: "from-gray-700 to-gray-900",
-        stats: { articles: "2.3M+", categories: "8+", submissionsPerMonth: "15,000+" },
+        stats: { articles: "2.3M+", categories: "8+", subPerMonth: "15,000+" },
     },
 
     {
@@ -118,7 +118,7 @@ const databases = [
         logo: "lawP.png",
         url: "/restricted",
         color: "from-indigo-700 to-indigo-800",
-        stats: { cases: "100,000+", laws: "1,000+", courts: "All Nigerian courts" },
+        stats: { cases: "100k+", laws: "1,000+", courts: "Nigerian courts" },
     },
 
     {
@@ -158,7 +158,7 @@ const databases = [
         logo: "PMC.png",
         url: "https://europepmc.org",
         color: "from-green-500 to-green-700",
-        stats: { articles: "42M+", grants: "800,000+", preprints: "500,000+" },
+        stats: { articles: "42M+", grants: "800k+", preprints: "500k+" },
     },
     {
         id: 11,
@@ -236,7 +236,7 @@ const databases = [
         logo: "project.png",
         url: "https://www.gutenberg.org",
         color: "from-yellow-700 to-orange-700",
-        stats: { books: "60,000+", languages: "60+", formats: "HTML, EPUB, Kindle, Plain Text" }
+        stats: { books: "60,000+", languages: "60+", formats: "Kindle, Plain Text" }
     },
     {
         id: 17,
@@ -262,7 +262,7 @@ const databases = [
         logo: "Bio.png",
         url: "https://www.biorxiv.org",
         color: "from-green-600 to-green-800",
-        stats: { preprints: "100,000+", subjects: "30+", downloads: "10M+/month" }
+        stats: { preprints: "100,000+", subjects: "30+", downloads: "10M+" }
     },
     {
         id: 19,
@@ -327,7 +327,7 @@ const databases = [
         logo: "EBSCO.png",
         url: "/restricted",
         color: "from-blue-500 to-blue-600",
-        stats: { articles: "15M+", journals: "2,000+", ebooks: "300,000+" }
+        stats: { articles: "15M+", journals: "2,000+", ebooks: "300k+" }
     },
     {
         id: 24,
