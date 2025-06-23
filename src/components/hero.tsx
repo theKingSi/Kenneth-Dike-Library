@@ -278,7 +278,9 @@ export default function Hero() {
         animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
       >
+      <Link href="/e-resources">
         <BookOpen className="w-8 h-8 text-white" />
+        </Link>
       </motion.div>
     </section>
   )

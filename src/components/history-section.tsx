@@ -132,7 +132,7 @@ export default function HistorySection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 text-white">
-                <h3 className="text-2xl font-bold mb-2">59 Years of Excellence</h3>
+                <h3 className="text-2xl font-bold mb-2">77 Years of Excellence</h3>
                 <p className="text-sm opacity-90">From 10,000 to 2.5M+ resources</p>
               </div>
 

@@ -14,6 +14,12 @@ const librarians = [
     section: "",
     image: "Liba.jpg",
   },
+    {
+    name: "DR. HELEN O. KOMOLAFE-OPADEJI",
+    title: "Former University Librarian",
+    section: "",
+    image: "DPT9.png",
+  },
   {
     name: "MR. C. O. OLA",
     title: "Deputy University Librarian",
@@ -95,7 +101,7 @@ const eras = [
     ],
   },
   {
-    title: "The Modernization Era",
+    title: "The Modernisation Era",
     period: "1988-2003",
     description:
       "The leadership of Mrs. Grace Olufunmilayo Tamuno and Mr. J.E. Ikem marked the beginning of the library's modernization journey. This period saw the early stages of automation and the introduction of modern library management practices. The library began to adapt to changing technological landscapes while maintaining its core mission of supporting teaching, learning, and research mandates of the University. Economic challenges led to some reduction in staff strength due to adherence to National University Commission (NUC) norms, but the library's commitment to excellence remained unwavering. This era set the stage for the digital transformation that would follow.",
@@ -113,7 +119,7 @@ const eras = [
     title: "The Digital Revolution",
     period: "2004-Present",
     description:
-      "The modern era of Kenneth Dike Library has been characterized by unprecedented digital transformation. Under the leadership of Dr. B.A. Oladele, Dr. Helen Komolafe-Opadeji, and current acting librarian Mr. C.O. Ola, the library has embraced the global shift from printed to electronic formats. The library now provides access to over 10 million electronic volumes through databases like JSTOR, RESEARCH4LIFE, and PROQUEST/Ebrary. The implementation of the University of Ibadan Integrated Library Software (UI-ILS) has enabled web-based access and inter-operability. The launch of the University of Ibadan Institutional Repository (UIIR) in 2014 has provided wider visibility to the university's intellectual outputs, raising its profile in global web metric rankings.",
+      "The modern era of Kenneth Dike Library has been characterized by unprecedented digital transformation. Under the leadership of Dr. B.A. Oladele, Dr. Helen Komolafe-Opadeji, and current universty librarian DR. Mercy Ariomerebi Iroaganachi, the library has embraced the global shift from printed to electronic formats. The library now provides access to over 10 million electronic volumes through databases like JSTOR, RESEARCH4LIFE, and PROQUEST/Ebrary. The implementation of the University of Ibadan Integrated Library Software (UI-ILS) has enabled web-based access and inter-operability. The launch of the University of Ibadan Institutional Repository (UIIR) in 2014 has provided wider visibility to the university's intellectual outputs, raising its profile in global web metric rankings.",
     image: "img4.jpg",
     quote:
       "Digitisation serves two major purposes: Preservation for posterity and delivery of virtual library services.",
@@ -275,6 +281,8 @@ export default function HistoryPage() {
           </div>
         </motion.section>
 <Moving />
+
+
         {/* Current Services Section */}
         <motion.section
           className="mb-20 py-16 bg-gradient-to-br from-green-50 to-orange-50 rounded-2xl"
@@ -290,33 +298,40 @@ export default function HistoryPage() {
               whileHover={{ y: -5, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
+              <Link href="/e-resources">
               <Database className="h-12 w-12 text-green-600 mb-4" />
               <h3 className="text-xl font-bold mb-3">Electronic Databases</h3>
               <p className="text-gray-600">
                 Access to JSTOR, RESEARCH4LIFE, PROQUEST/Ebrary and over 10 million electronic volumes
               </p>
+              </Link>
             </motion.div>
             <motion.div
               className="bg-white rounded-xl p-6 shadow-lg"
               whileHover={{ y: -5, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
+              <Link href="http://41.184.122.87:8080/">
               <Globe className="h-12 w-12 text-orange-600 mb-4" />
               <h3 className="text-xl font-bold mb-3">UI-ILS System</h3>
               <p className="text-gray-600">
                 University of Ibadan Integrated Library Software with web interface and OPAC access
               </p>
+              </Link>
             </motion.div>
+
             <motion.div
               className="bg-white rounded-xl p-6 shadow-lg"
               whileHover={{ y: -5, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
+              <Link href="https://repository.ui.edu.ng/home">
               <Award className="h-12 w-12 text-blue-600 mb-4" />
               <h3 className="text-xl font-bold mb-3">Institutional Repository</h3>
               <p className="text-gray-600">
                 UIIR launched in 2014 to showcase University of Ibadan's intellectual outputs globally
               </p>
+              </Link>
             </motion.div>
           </div>
         </motion.section>

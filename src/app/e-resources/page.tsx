@@ -25,7 +25,7 @@ const databases = [
     {
         id: 2,
         name: "Science.gov",
-        category: "Multidisciplinary Science",
+        category: "Multidisciplinary",
         description:
             "A US government gateway offering one-stop access to 60+ scientific databases and over 2,200 portals across 13 federal science agencies, covering 200 million+ pages of research and technical information.",
         features: [
@@ -366,6 +366,12 @@ const categories = [
     "Social Sciences & Humanities",
     "Social Sciences",
     "Academic Publishing",
+    "History & Journalism",
+    "Geopolitics & Statistics",
+    "Economics & Business",
+    "Theses & Dissertations",
+    "Astronomy & Astrophysics",
+    "Life Sciences",
 ]
 
 export default function EResourcesPage() {

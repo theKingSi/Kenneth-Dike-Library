@@ -8,6 +8,12 @@ const librarians = [
     section: "",
     image: "Liba.jpg",
   },
+   {
+    name: "DR. HELEN O. KOMOLAFE-OPADEJI",
+    title: "Former University Librarian",
+    section: "",
+    image: "DPT9.png",
+  },
   {
     name: "MR. C. O. OLA",
     title: "Deputy University Librarian",

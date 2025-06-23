@@ -13,7 +13,7 @@ export default function Header() {
     { name: "Home", href: "/" },
     { name: "History", href: "/history" },
    { name: "E-resources", href: "/e-resources" },
-    { name: "Contact", href: "#contact" },
+    { name: "Contact", href: "/contact" },
   ]
 
   return (
@@ -62,7 +62,9 @@ export default function Header() {
           {/* Auth Buttons - Desktop */}
           <div className="hidden md:flex items-center space-x-4">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link href="http://41.184.122.87:8080/">
               <Button className="bg-blue-600 hover:bg-blue-700 cursor-pointer text-white">Get Started</Button>
+              </Link>
             </motion.div>
           </div>
 
@@ -96,9 +98,11 @@ export default function Header() {
                   </Link>
                 ))}
                 <div className="pt-4 border-t border-gray-200">
+                     <Link href="http://41.184.122.87:8080/">
                   <Button className="bg-blue-600 hover:bg-blue-700 cursor-pointer text-white w-full justify-center">
                     Get Started
                   </Button>
+                  </Link>
                 </div>
               </div>
             </motion.nav>
