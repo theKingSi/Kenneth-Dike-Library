@@ -27,6 +27,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import Header from "@/components/header"
+import Footer from "@/components/footer"
+import ScrollToTop from "@/components/scroll-to-top"
 
 
 const departments = [
@@ -101,7 +103,7 @@ export default function ContactPage() {
     })
   }
 
-const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault()
   setIsSubmitting(true)
 
@@ -116,9 +118,9 @@ const handleSubmit = async (e: React.FormEvent) => {
 
     if (!res.ok) {
       console.error("Submission failed:", result.error)
-      alert("There was an error sending your message. Please try again.")
+      toast.error("There was an error sending your message. Please try again.")
     } else {
-      alert("Message sent successfully!")
+      toast.success("Message sent successfully!")
       setFormData({
         name: "",
         email: "",
@@ -129,7 +131,7 @@ const handleSubmit = async (e: React.FormEvent) => {
     }
   } catch (error) {
     console.error("Unexpected error:", error)
-    alert("An unexpected error occurred.")
+    toast.error("An unexpected error occurred.")
   } finally {
     setIsSubmitting(false)
   }
@@ -150,9 +152,8 @@ const handleSubmit = async (e: React.FormEvent) => {
         {[...Array(15)].map((_, i) => (
           <motion.div
             key={i}
-            className={`absolute w-4 h-4 rounded-full ${
-              i % 3 === 0 ? "bg-green-300/20" : i % 3 === 1 ? "bg-orange-300/20" : "bg-blue-300/20"
-            }`}
+            className={`absolute w-4 h-4 rounded-full ${i % 3 === 0 ? "bg-green-300/20" : i % 3 === 1 ? "bg-orange-300/20" : "bg-blue-300/20"
+              }`}
             initial={{
               x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1920),
               y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 1080),
@@ -252,8 +253,8 @@ const handleSubmit = async (e: React.FormEvent) => {
           </motion.div>
         </motion.div>
 
-       
-        
+
+
 
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
@@ -546,6 +547,8 @@ const handleSubmit = async (e: React.FormEvent) => {
           </div>
         </div>
       </div>
+      <Footer />
+      <ScrollToTop />
     </div>
   )
 }

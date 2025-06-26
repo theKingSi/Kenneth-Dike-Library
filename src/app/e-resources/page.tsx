@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import Header from "@/components/header"
+import ScrollToTop from "@/components/scroll-to-top"
+import Footer from "@/components/footer"
 
 const databases = [
     {

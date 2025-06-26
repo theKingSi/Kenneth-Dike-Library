@@ -1,21 +1,41 @@
-// app/api/contact/route.ts
+// /app/api/contact/route.ts
+import { NextResponse } from "next/server"
+import nodemailer from "nodemailer"
 
-import { NextRequest, NextResponse } from "next/server"
+export async function POST(req: Request) {
+  const body = await req.json()
+  const { name, email, subject, message, department } = body
 
-export async function POST(req: NextRequest) {
+  // Validate fields
+  if (!name || !email || !subject || !message) {
+    return NextResponse.json({ error: "Missing fields" }, { status: 400 })
+  }
+
   try {
-    const body = await req.json()
+    const transporter = nodemailer.createTransport({
+      service: "gmail", // or "hotmail", "yahoo", etc. or use host + port + secure
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    })
 
-    console.log("📨 New Contact Message Received:")
-    console.log("Full Name:", body.name)
-    console.log("Email:", body.email)
-    console.log("Subject:", body.subject)
-    console.log("Department:", body.department)
-    console.log("Message:", body.message)
+    const mailOptions = {
+      from: `"${name}" <${email}>`,
+      to: process.env.EMAIL_TO, // your receiving email
+      subject: `Contact Form - ${subject}`,
+      html: `
+        <h3>New message from ${name} (${email})</h3>
+        <p><strong>Department:</strong> ${department || "N/A"}</p>
+        <p><strong>Message:</strong><br>${message}</p>
+      `,
+    }
 
-    return NextResponse.json({ success: true, message: "Form data received" }, { status: 200 })
-  } catch (error) {
-    console.error("❌ Error parsing form data:", error)
-    return NextResponse.json({ error: "Invalid request" }, { status: 400 })
+    await transporter.sendMail(mailOptions)
+
+    return NextResponse.json({ success: true })
+  } catch (err) {
+    console.error("Email send error:", err)
+    return NextResponse.json({ error: "Failed to send email" }, { status: 500 })
   }
 }
