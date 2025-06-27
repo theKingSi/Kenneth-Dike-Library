@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState, useEffect } from "react"
-import { motion, useScroll, useSpring } from "framer-motion"
+import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion"
 import {
   ArrowLeft,
   Mail,
@@ -22,6 +22,8 @@ import {
   Users,
   BookOpen,
   Zap,
+  CheckCircle,
+  AlertTriangle,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -29,7 +31,6 @@ import Link from "next/link"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import ScrollToTop from "@/components/scroll-to-top"
-
 
 const departments = [
   {
@@ -83,6 +84,7 @@ export default function ContactPage() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [currentTime, setCurrentTime] = useState(new Date())
+  const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null)
 
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, {
@@ -96,6 +98,13 @@ export default function ContactPage() {
     return () => clearInterval(timer)
   }, [])
 
+  useEffect(() => {
+    if (submitStatus) {
+      const timeout = setTimeout(() => setSubmitStatus(null), 4000)
+      return () => clearTimeout(timeout)
+    }
+  }, [submitStatus])
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
@@ -104,42 +113,73 @@ export default function ContactPage() {
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault()
-  setIsSubmitting(true)
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitStatus(null)
 
-  try {
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    })
-
-    const result = await res.json()
-
-    if (!res.ok) {
-      console.error("Submission failed:", result.error)
-      toast.error("There was an error sending your message. Please try again.")
-    } else {
-      toast.success("Message sent successfully!")
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        department: "",
-        message: "",
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       })
+
+      const result = await res.json()
+
+      if (!res.ok) {
+        console.error("Submission failed:", result.error)
+        setSubmitStatus("error")
+      } else {
+        console.log("Message sent successfully!")
+        setSubmitStatus("success")
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          department: "",
+          message: "",
+        })
+      }
+    } catch (error) {
+      console.error("Unexpected error:", error)
+      setSubmitStatus("error")
+    } finally {
+      setIsSubmitting(false)
     }
-  } catch (error) {
-    console.error("Unexpected error:", error)
-    toast.error("An unexpected error occurred.")
-  } finally {
-    setIsSubmitting(false)
   }
-}
+
+
 
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-green-50 to-orange-50 relative overflow-hidden">
+     <AnimatePresence>
+        {submitStatus === "success" && (
+          <motion.div
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.5 }}
+            className="fixed top-4 left-1/2 transform -translate-x-1/2 w-[90%] sm:w-auto bg-green-100 border border-green-400 text-green-700 px-6 py-3 rounded-xl shadow-xl z-50 flex items-center gap-2 text-sm sm:text-base"
+          >
+            <CheckCircle className="w-5 h-5 text-green-600" />
+            Your message has been sent successfully!
+          </motion.div>
+        )}
+        {submitStatus === "error" && (
+          <motion.div
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.5 }}
+            className="fixed top-4 left-1/2 transform -translate-x-1/2 w-[90%] sm:w-auto bg-red-100 border border-red-400 text-red-700 px-6 py-3 rounded-xl shadow-xl z-50 flex items-center gap-2 text-sm sm:text-base"
+          >
+            <AlertTriangle className="w-5 h-5 text-red-600" />
+            Failed to send message. Please try again.
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-600 to-orange-600 origin-left z-50"
