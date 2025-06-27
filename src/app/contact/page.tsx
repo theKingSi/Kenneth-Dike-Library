@@ -85,6 +85,7 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [currentTime, setCurrentTime] = useState(new Date())
   const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null)
+  const [selectedDept, setSelectedDept] = useState<number | null>(null)
 
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, {
@@ -147,6 +148,50 @@ export default function ContactPage() {
       setIsSubmitting(false)
     }
   }
+
+  // Replace departments map with interactive hover and click selection
+  const renderDepartments = departments.map((dept, index) => {
+    const isSelected = selectedDept === index
+    return (
+      <motion.div
+        key={index}
+        onClick={() => setSelectedDept(index)}
+        className={`p-4 rounded-xl border border-gray-100 group cursor-pointer transition-all duration-300 ${
+          isSelected
+            ? "bg-white/70 backdrop-blur-md shadow-xl scale-[1.02] -translate-y-2 ring-2 ring-green-500"
+            : "hover:bg-gray-50"
+        }`}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        animate={isSelected ? { scale: 1.02, y: -10 } : { scale: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        viewport={{ once: true }}
+      >
+        <div className="flex items-start space-x-4">
+          <motion.div
+            className={`w-12 h-12 rounded-xl bg-gradient-to-br ${dept.color} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}
+            animate={{ rotate: [0, 10, 0] }}
+            transition={{
+              duration: 5,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "easeInOut",
+              delay: index * 0.5,
+            }}
+          >
+            <dept.icon className="h-6 w-6 text-white" />
+          </motion.div>
+          <div className="flex-1">
+            <h3 className="font-semibold text-gray-900 group-hover:text-green-600 transition-colors duration-300">
+              {dept.name}
+            </h3>
+            <p className="text-sm text-gray-600 mb-1">Head: {dept.head}</p>
+            <p className="text-sm text-gray-500">{dept.email}</p>
+            <p className="text-sm text-gray-500">{dept.phone}</p>
+          </div>
+        </div>
+      </motion.div>
+    )
+  })
 
 
 
@@ -454,62 +499,7 @@ export default function ContactPage() {
           {/* Departments & Social */}
           <div className="space-y-8">
             {/* Departments */}
-            <motion.div
-              className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-gray-100"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <motion.h2
-                className="text-3xl font-bold text-gray-900 mb-6"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                Department Contacts
-              </motion.h2>
-
-              <div className="space-y-4">
-                {departments.map((dept, index) => (
-                  <motion.div
-                    key={index}
-                    className="p-4 rounded-xl border border-gray-100 hover:bg-gray-50 transition-all duration-300 group"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    whileHover={{ scale: 1.02, x: 5 }}
-                  >
-                    <div className="flex items-start space-x-4">
-                      <motion.div
-                        className={`w-12 h-12 rounded-xl bg-gradient-to-br ${dept.color} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}
-                        animate={{
-                          rotate: [0, 10, 0],
-                        }}
-                        transition={{
-                          duration: 5,
-                          repeat: Number.POSITIVE_INFINITY,
-                          ease: "easeInOut",
-                          delay: index * 0.5,
-                        }}
-                      >
-                        <dept.icon className="h-6 w-6 text-white" />
-                      </motion.div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-gray-900 group-hover:text-green-600 transition-colors duration-300">
-                          {dept.name}
-                        </h3>
-                        <p className="text-sm text-gray-600 mb-1">Head: {dept.head}</p>
-                        <p className="text-sm text-gray-500">{dept.email}</p>
-                        <p className="text-sm text-gray-500">{dept.phone}</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+           <motion.div className="space-y-4">{renderDepartments}</motion.div>
 
             {/* Social Media & Quick Actions */}
             <motion.div

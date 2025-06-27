@@ -380,19 +380,6 @@ export default function HistoryPage() {
           </p>
         </div>
       </div>
-
-      {/* Scroll to Top Button */}
-      <motion.button
-        onClick={scrollToTop}
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-green-600 text-white flex items-center justify-center shadow-lg z-50 hover:bg-green-700 transition-colors duration-300"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-      >
-        <ChevronUp className="h-5 w-5 sm:h-6 sm:w-6" />
-      </motion.button>
     </div>
   )
 }
@@ -569,6 +556,10 @@ function LibrarianCard({ librarian, index }: { librarian: any; index: number }) 
           Leader
         </motion.div>
       </div>
+      
+
     </motion.div>
+
+    
   )
 }
