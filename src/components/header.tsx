@@ -33,8 +33,8 @@ export default function Header() {
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               <div className="flex items-center space-x-1">
-                <img src="/ui_logo.png" alt="Logo 1" className="w-8 h-8 object-contain" />
-                <img src="/kdl_logo.png" alt="Logo 2" className="w-6 h-6 object-contain" />
+                <img src="/logo/ui_logo.png" alt="Logo 1" className="w-8 h-8 object-contain" />
+                <img src="/logo/kdl_logo.png" alt="Logo 2" className="w-6 h-6 object-contain" />
               </div>
               <span className="ml-2 text-lg sm:text-xl font-bold text-gray-900">Kenneth Dike Library</span>
             </motion.div>
