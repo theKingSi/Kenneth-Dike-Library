@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import Image from "next/image";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -12,7 +13,7 @@ export default function Header() {
   const navItems = [
     { name: "Home", href: "/" },
     { name: "History", href: "/history" },
-   { name: "E-resources", href: "/e-resources" },
+    { name: "E-resources", href: "/e-resources" },
     { name: "Contact", href: "/contact" },
   ]
 
@@ -33,8 +34,20 @@ export default function Header() {
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               <div className="flex items-center space-x-1">
-                <img src="/logo/ui_logo.png" alt="Logo 1" className="w-8 h-8 object-contain" />
-                <img src="/logo/kdl_logo.png" alt="Logo 2" className="w-6 h-6 object-contain" />
+                <Image
+                  src="/logo/ui_logo.png"
+                  alt="Logo 1"
+                  width={32}
+                  height={32}
+                  className="w-8 h-8 object-contain"
+                />
+                <Image
+                  src="/logo/kdl_logo.png"
+                  alt="Logo 2"
+                  width={24}
+                  height={24}
+                  className="w-6 h-6 object-contain"
+                />
               </div>
               <span className="ml-2 text-lg sm:text-xl font-bold text-gray-900">Kenneth Dike Library</span>
             </motion.div>
@@ -63,7 +76,7 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-4">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link href="http://41.184.122.87:8080/">
-              <Button className="bg-blue-600 hover:bg-blue-700 cursor-pointer text-white">Get Started</Button>
+                <Button className="bg-blue-600 hover:bg-blue-700 cursor-pointer text-white">Get Started</Button>
               </Link>
             </motion.div>
           </div>
@@ -98,10 +111,10 @@ export default function Header() {
                   </Link>
                 ))}
                 <div className="pt-4 border-t border-gray-200">
-                     <Link href="http://41.184.122.87:8080/">
-                  <Button className="bg-blue-600 hover:bg-blue-700 cursor-pointer text-white w-full justify-center">
-                    Get Started
-                  </Button>
+                  <Link href="http://41.184.122.87:8080/">
+                    <Button className="bg-blue-600 hover:bg-blue-700 cursor-pointer text-white w-full justify-center">
+                      Get Started
+                    </Button>
                   </Link>
                 </div>
               </div>
