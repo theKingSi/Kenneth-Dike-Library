@@ -327,16 +327,7 @@ export default function LibrariesPage() {
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          <Link href="/">
-            <Button variant="ghost" className="flex items-center gap-2">
-              <ArrowLeft className="h-4 w-4" />
-              <span className="hidden sm:inline">Back to Home</span>
-              <span className="sm:hidden">Back</span>
-            </Button>
-          </Link>
-          <div className="text-xs sm:text-sm text-gray-500 italic">Faculty Libraries</div>
-        </div>
+        
       </motion.header>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
