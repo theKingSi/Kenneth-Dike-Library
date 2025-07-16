@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import { useState } from "react"
+import Header from "@/components/header"
 
 const facultyLibraries = [
   {
@@ -327,7 +328,7 @@ export default function LibrariesPage() {
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        
+        <Header />
       </motion.header>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
