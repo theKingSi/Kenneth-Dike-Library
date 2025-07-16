@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Header from "@/components/header"
 import Moving from "@/components/moving"
+import ScrollToTop from "@/components/scroll-to-top"
 
 const librarians = [
   {
@@ -498,68 +499,69 @@ function EraArticle({ era, index }: { era: any; index: number }) {
 
 function LibrarianCard({ librarian, index }: { librarian: any; index: number }) {
   return (
-    <motion.div
-      className="bg-white rounded-xl p-4 sm:p-6 shadow-lg border border-gray-100 w-64 sm:w-72 lg:w-80 flex-shrink-0 group"
-      whileHover={{
-        y: -10,
-        scale: 1.05,
-        transition: { type: "spring", stiffness: 300, damping: 20 },
-      }}
-      onHoverStart={() => {
-        const scrollContainer = document.querySelector("[data-scroll-container]") as HTMLElement
-        if (scrollContainer) {
-          scrollContainer.style.animationPlayState = "paused"
-        }
-      }}
-      onHoverEnd={() => {
-        const scrollContainer = document.querySelector("[data-scroll-container]") as HTMLElement
-        if (scrollContainer) {
-          scrollContainer.style.animationPlayState = "running"
-        }
-      }}
-    >
-      <div className="flex flex-col items-center text-center">
-        <motion.div
-          className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden mb-3 sm:mb-4 border-4 border-green-100 group-hover:border-green-400 transition-colors duration-300"
-          whileHover={{
-            scale: 1.1,
-            rotate: [0, -5, 5, 0],
-            transition: { type: "spring", stiffness: 300, damping: 20 },
-          }}
-        >
-          <img
-            src={librarian.image || "/placeholder.svg"}
-            alt={librarian.name}
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-        <h3 className="text-sm sm:text-base lg:text-lg font-bold text-gray-900 mb-1 group-hover:text-green-600 transition-colors duration-300 leading-tight">
-          {librarian.name}
-        </h3>
-        <p className="text-green-600 font-semibold mb-1 text-xs sm:text-sm">{librarian.title}</p>
-        {librarian.section && <p className="text-xs text-gray-500 mb-2">{librarian.section}</p>}
-        <p className="text-xs text-gray-500 mb-2 font-medium">{librarian.period}</p>
-        <p className="text-gray-700 leading-relaxed text-xs sm:text-sm">{librarian.achievement}</p>
+    <>
+      <motion.div
+        className="bg-white rounded-xl p-4 sm:p-6 shadow-lg border border-gray-100 w-64 sm:w-72 lg:w-80 flex-shrink-0 group"
+        whileHover={{
+          y: -10,
+          scale: 1.05,
+          transition: { type: "spring", stiffness: 300, damping: 20 },
+        }}
+        onHoverStart={() => {
+          const scrollContainer = document.querySelector("[data-scroll-container]") as HTMLElement
+          if (scrollContainer) {
+            scrollContainer.style.animationPlayState = "paused"
+          }
+        }}
+        onHoverEnd={() => {
+          const scrollContainer = document.querySelector("[data-scroll-container]") as HTMLElement
+          if (scrollContainer) {
+            scrollContainer.style.animationPlayState = "running"
+          }
+        }}
+      >
+        <div className="flex flex-col items-center text-center">
+          <motion.div
+            className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden mb-3 sm:mb-4 border-4 border-green-100 group-hover:border-green-400 transition-colors duration-300"
+            whileHover={{
+              scale: 1.1,
+              rotate: [0, -5, 5, 0],
+              transition: { type: "spring", stiffness: 300, damping: 20 },
+            }}
+          >
+            <img
+              src={librarian.image || "/placeholder.svg"}
+              alt={librarian.name}
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+          <h3 className="text-sm sm:text-base lg:text-lg font-bold text-gray-900 mb-1 group-hover:text-green-600 transition-colors duration-300 leading-tight">
+            {librarian.name}
+          </h3>
+          <p className="text-green-600 font-semibold mb-1 text-xs sm:text-sm">{librarian.title}</p>
+          {librarian.section && <p className="text-xs text-gray-500 mb-2">{librarian.section}</p>}
+          <p className="text-xs text-gray-500 mb-2 font-medium">{librarian.period}</p>
+          <p className="text-gray-700 leading-relaxed text-xs sm:text-sm">{librarian.achievement}</p>
 
-        {/* Floating badge */}
-        <motion.div
-          className="absolute top-3 right-3 sm:top-4 sm:right-4 px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          animate={{
-            y: [0, -3, 0],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut",
-          }}
-        >
-          Leader
-        </motion.div>
-      </div>
-      
+          {/* Floating badge */}
+          <motion.div
+            className="absolute top-3 right-3 sm:top-4 sm:right-4 px-2 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            animate={{
+              y: [0, -3, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "easeInOut",
+            }}
+          >
+            Leader
+          </motion.div>
+        </div>
+      </motion.div>
 
-    </motion.div>
-
-    
-  )
+      {/* Scroll to top added here — ideally not inside each card */}
+      <ScrollToTop />
+    </>
+  );
 }

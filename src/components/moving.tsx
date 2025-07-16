@@ -1,5 +1,8 @@
+'use client'
+
 import React from 'react'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 const librarians = [
   {
@@ -8,7 +11,7 @@ const librarians = [
     section: "",
     image: "Liba.jpg",
   },
-   {
+  {
     name: "DR. HELEN O. KOMOLAFE-OPADEJI",
     title: "Former University Librarian",
     section: "",
@@ -50,7 +53,15 @@ const librarians = [
     section: "Medical Library",
     image: "DPT5.PNG",
   },
-];
+]
+
+// Utility to generate slug
+const generateSlug = (name: string) =>
+  name
+    .toLowerCase()
+    .replace(/\./g, '')
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9\-]/g, '')
 
 const Moving = () => {
   return (
@@ -75,31 +86,31 @@ const Moving = () => {
             ease: "linear",
           }}
         >
-          {[...librarians, ...librarians].map((librarian, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 flex-shrink-0 w-72"
-            >
-              <div className="flex flex-col items-center text-center">
-                <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-4 border-blue-100">
-                  <img
-                    src={librarian.image || "/placeholder.svg"}
-                    alt={librarian.name}
-                    className="w-full h-full object-cover"
-                  />
+          {[...librarians, ...librarians].map((librarian, index) => {
+            const slug = generateSlug(librarian.name)
+            return (
+              <Link key={index} href={`/history/${slug}`}>
+                <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 flex-shrink-0 w-72 cursor-pointer hover:shadow-xl transition">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-4 border-blue-100">
+                      <img
+                        src={librarian.image || "/placeholder.svg"}
+                        alt={librarian.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-1">{librarian.name}</h3>
+                    <p className="text-blue-600 font-semibold mb-2">{librarian.title}</p>
+                    <p className="text-xs text-gray-500 italic">{librarian.section}</p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-1">{librarian.name}</h3>
-                <p className="text-blue-600 font-semibold mb-2">{librarian.title}</p>
-                 <p className="text-xs text-gray-500 italic">{librarian.section}</p>
-              </div>
-            </div>
-          ))}
+              </Link>
+            )
+          })}
         </motion.div>
       </div>
     </motion.section>
-  );
-};
+  )
+}
 
-export default Moving;//make it better 
-
-
+export default Moving
