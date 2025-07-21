@@ -6,6 +6,7 @@ import { ArrowLeft, X, ChevronLeft, ChevronRight, Calendar, Camera } from "lucid
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Header from "@/components/header"
+import ScrollToTop from "@/components/scroll-to-top"
 
 const galleryImages = [
   {
@@ -560,7 +561,7 @@ function GalleryCard({ image, index, onClick }: { image: any; index: number; onC
   const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <motion.div
+    <>    <motion.div
       className="group cursor-pointer break-inside-avoid"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -670,5 +671,12 @@ function GalleryCard({ image, index, onClick }: { image: any; index: number; onC
         </AnimatePresence>
       </div>
     </motion.div>
+
+    <div>
+      <ScrollToTop />
+    </div>
+    
+    </>
+
   )
 }
