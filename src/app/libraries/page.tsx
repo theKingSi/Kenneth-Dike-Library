@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import { useState } from "react"
 import Header from "@/components/header"
+import ScrollToTop from "@/components/scroll-to-top"
 
 const facultyLibraries = [
   {
@@ -484,6 +485,7 @@ export default function LibrariesPage() {
 
 function LibraryCard({ library, index }: { library: any; index: number }) {
   return (
+    <>
     <motion.div
       className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-2xl transition-all duration-500"
       initial={{ opacity: 0, y: 50 }}
@@ -545,5 +547,10 @@ function LibraryCard({ library, index }: { library: any; index: number }) {
       {/* Hover Effect Border */}
       <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-green-200 transition-colors duration-300 pointer-events-none"></div>
     </motion.div>
+
+     
+          <ScrollToTop />
+    
+        </>
   )
 }

@@ -596,7 +596,7 @@ export default function EResourcesPage() {
 
 function DatabaseCard({ database, index }: { database: any; index: number }) {
     return (
-        <motion.div
+        <>        <motion.div
             className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-2xl transition-all duration-500"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -702,5 +702,11 @@ function DatabaseCard({ database, index }: { database: any; index: number }) {
             {/* Hover Effect Border */}
             <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-green-200 transition-colors duration-300 pointer-events-none"></div>
         </motion.div>
+
+
+ 
+      <ScrollToTop />
+    
+    </>
     )
 }
