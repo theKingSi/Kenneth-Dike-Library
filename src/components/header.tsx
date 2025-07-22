@@ -96,14 +96,14 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-4">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link href="http://41.184.122.87:8080/">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Button className="bg-blue-600 hover:bg-blue-70 cursor-pointer text-white">
                   Get Started
                 </Button>
               </Link>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
-                className="bg-blue-600 hover:bg-blue-700 text-white"
+                className="bg-blue-600 hover:bg-blue-700 cursor-pointer text-white"
                 onClick={handleDownload}
               >
                 Download Guide

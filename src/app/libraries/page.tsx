@@ -537,7 +537,7 @@ function LibraryCard({ library, index }: { library: any; index: number }) {
 
         {/* Learn More Button */}
         <Link href={`/library/${library.slug}`}>
-          <Button className="w-full bg-gradient-to-r from-green-600 to-orange-600 hover:from-green-700 hover:to-orange-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 group/btn">
+          <Button className="w-full bg-gradient-to-r from-green-600 to-orange-600 hover:from-green-700 hover:to-orange-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 group/btn cursor-pointer">
             <span>Learn More</span>
             <ExternalLink className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
           </Button>

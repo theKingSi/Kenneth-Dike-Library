@@ -481,7 +481,7 @@ export default function GalleryPage() {
             <div className="hidden lg:flex w-full h-full items-center justify-center p-6 xl:p-8">
               {/* Desktop Close Button */}
               <button
-                className="absolute top-6 right-6 z-20 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors duration-200"
+                className="absolute top-6 right-6 z-20 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors duration-200 cursor-pointer"
                 onClick={() => setSelectedImage(null)}
               >
                 <X className="h-6 w-6" />
@@ -489,7 +489,7 @@ export default function GalleryPage() {
 
               {/* Desktop Navigation Buttons */}
               <button
-                className="absolute left-6 top-1/2 transform -translate-y-1/2 z-20 w-14 h-14 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors duration-200"
+                className="absolute left-6 top-1/2 transform -translate-y-1/2 z-20 w-14 h-14 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors duration-200 cursor-pointer"
                 onClick={(e) => {
                   e.stopPropagation()
                   prevImage()
@@ -498,7 +498,7 @@ export default function GalleryPage() {
                 <ChevronLeft className="h-7 w-7" />
               </button>
               <button
-                className="absolute right-6 top-1/2 transform -translate-y-1/2 z-20 w-14 h-14 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors duration-200"
+                className="absolute right-6 top-1/2 transform -translate-y-1/2 z-20 w-14 h-14 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors duration-200 cursor-pointer"
                 onClick={(e) => {
                   e.stopPropagation()
                   nextImage()
