@@ -24,6 +24,7 @@ import {
   Zap,
   CheckCircle,
   AlertTriangle,
+  BookPlus,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -31,6 +32,7 @@ import Link from "next/link"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import ScrollToTop from "@/components/scroll-to-top"
+import BookRecommendationModal from "@/components/book-recommendation-modal"
 
 const departments = [
   {
@@ -86,6 +88,7 @@ export default function ContactPage() {
   const [currentTime, setCurrentTime] = useState(new Date())
   const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null)
   const [selectedDept, setSelectedDept] = useState<number | null>(null)
+  const [showBookForm, setShowBookForm] = useState(false)
 
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, {
@@ -493,6 +496,23 @@ export default function ContactPage() {
                   )}
                 </Button>
               </motion.div>
+
+               <motion.div
+                className="mt-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.9 }}
+                viewport={{ once: true }}
+              >
+                <Button
+                  type="button"
+                  onClick={() => setShowBookForm(true)}
+                  className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
+                >
+                  <BookPlus className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform duration-300" />
+                  Recommend a Book
+                </Button>
+              </motion.div>
             </form>
           </motion.div>
 
@@ -577,8 +597,8 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-      <Footer />
-      <ScrollToTop />
+     {/* Book Recommendation Modal */}
+      <BookRecommendationModal isOpen={showBookForm} onClose={() => setShowBookForm(false)} />
     </div>
   )
 }

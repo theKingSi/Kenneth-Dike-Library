@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, DownloadCloud } from "lucide-react"
+import { Menu, X, DownloadCloud, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
@@ -10,6 +10,7 @@ import { toast } from "sonner"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [showDropdown, setShowDropdown] = useState(false)
 
   const navItems = [
     { name: "Home", href: "/" },
@@ -53,21 +54,21 @@ export default function Header() {
             >
               <div className="flex items-center space-x-1">
                 <Image
-                  src="/logo/ui_logo.png"
+                  src="/logo/Ui_logo.png"
                   alt="UI Logo"
                   width={32}
                   height={32}
                   className="w-8 h-8 object-contain"
                 />
                 <Image
-                  src="/logo/kdl_logo.png"
+                  src="/logo/Kdl_logo.png"
                   alt="KDL Logo"
                   width={24}
                   height={24}
                   className="w-6 h-6 object-contain"
                 />
               </div>
-              <span className="ml-2 text-lg sm:text-xl font-bold text-gray-900">
+              <span className="ml-2 text-sm sm:text-lg font-bold text-gray-900">
                 Kenneth Dike Library
               </span>
             </motion.div>
@@ -92,15 +93,50 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Desktop Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link href="http://41.184.122.87:8080/">
-                <Button className="bg-blue-600 hover:bg-blue-70 cursor-pointer text-white">
-                  Get Started
-                </Button>
-              </Link>
-            </motion.div>
+          {/* Desktop Buttons with Dropdown */}
+          <div className="hidden md:flex items-center space-x-4 relative group">
+            <div
+              className="relative"
+              onMouseEnter={() => setShowDropdown(true)}
+              onMouseLeave={() => setShowDropdown(false)}
+            >
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white flex items-center space-x-1">
+                <span>Get Started</span>
+                <ChevronDown className="w-4 h-4" />
+              </Button>
+
+              <AnimatePresence>
+                {showDropdown && (
+                  <motion.div
+                    className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-100 z-50"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Link
+                      href="http://41.184.122.87:8080/"
+                      className="block px-4 py-3 text-sm hover:bg-blue-50 transition-colors"
+                    >
+                      Register
+                    </Link>
+                    <Link
+                      href="http://41.184.122.87:8080/record/opac"
+                      className="block px-4 py-3 text-sm hover:bg-blue-50 transition-colors"
+                    >
+                      Search
+                    </Link>
+                      <Link
+                      href="https://repository.ui.edu.ng/home"
+                      className="block px-4 py-3 text-sm hover:bg-blue-50"
+                    >
+                      Institutional Repository
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 className="bg-blue-600 hover:bg-blue-700 cursor-pointer text-white"
@@ -111,7 +147,7 @@ export default function Header() {
             </motion.div>
           </div>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Menu Button */}
           <Button
             variant="ghost"
             size="icon"
@@ -123,55 +159,71 @@ export default function Header() {
           </Button>
         </div>
 
-        {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.nav
-              className="md:hidden overflow-hidden"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="flex flex-col space-y-2 py-4 border-t border-gray-200">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <motion.span
-                      className="block px-4 py-2 text-gray-700 hover:text-blue-600 font-medium"
-                      whileHover={{ x: 10 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    >
-                      {item.name}
-                    </motion.span>
-                  </Link>
-                ))}
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden px-4 py-4 border-t border-gray-200 space-y-3">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={() => setIsMenuOpen(false)}
+                className="block w-full px-4 py-2 rounded-md hover:bg-blue-100 text-gray-800 font-medium shadow-sm"
+              >
+                {item.name}
+              </Link>
+            ))}
 
-                <div className="flex flex-col space-y-2 mt-4 px-4 border-t border-gray-200 pt-4">
-                  <Link href="http://41.184.122.87:8080/">
-                    <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full justify-center">
-                      Get Started
-                    </Button>
-                  </Link>
-                  <Button
-                    className="bg-blue-600 hover:bg-blue-700 text-white w-full justify-center"
-                    onClick={() => {
-                      setIsMenuOpen(false)
-                      setTimeout(() => {
-                        handleDownload()
-                      }, 300) // small delay to wait for animation/layout
-                    }}
+            {/* Get Started Dropdown */}
+            <div className="mt-2 space-y-2">
+              <Button
+                className="w-full bg-blue-600 text-white justify-between"
+                onClick={() => setShowDropdown(!showDropdown)}
+              >
+                <span>Get Started</span>
+                <ChevronDown className="w-4 h-4" />
+              </Button>
+
+              <AnimatePresence>
+                {showDropdown && (
+                  <motion.div
+                    className="bg-white rounded-md border border-gray-200 shadow-md"
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    Download Guide
-                  </Button>
-                </div>
-              </div>
-            </motion.nav>
-          )}
-        </AnimatePresence>
+                    <Link
+                      href="http://41.184.122.87:8080/"
+                      className="block px-4 py-3 text-sm hover:bg-blue-50"
+                    >
+                      Register
+                    </Link>
+                    <Link
+                      href="http://41.184.122.87:8080/record/opac"
+                      className="block px-4 py-3 text-sm hover:bg-blue-50"
+                    >
+                      Search
+                    </Link>
+                      <Link
+                      href="https://repository.ui.edu.ng/home"
+                      className="block px-4 py-3 text-sm hover:bg-blue-50"
+                    >
+                      Institutional Repository
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Download Guide Button */}
+            <Button
+              className="w-full bg-blue-600 text-white mt-2"
+              onClick={handleDownload}
+            >
+              Download Guide
+            </Button>
+          </div>
+        )}
       </div>
     </motion.header>
   )
