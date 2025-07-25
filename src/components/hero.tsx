@@ -39,7 +39,7 @@ const heroSlides = [
   },
   {
     id: 4,
-    image: "/placeholder.svg?height=1080&width=1920&text=Research+Support",
+    image: "Img675.jpg",
     title: "Research Support",
     subtitle: "Expert guidance for your journey",
     description: "Get personalized research assistance from our expert librarians and subject specialists.",

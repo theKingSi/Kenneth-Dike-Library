@@ -67,6 +67,14 @@ const departments = [
     icon: Users,
     color: "from-pink-500 to-pink-600",
   },
+   {
+    name: "Reference Services",
+    email: "reference@library.ui.edu.ng",
+    phone: "+234 (0) 2 810 1104",
+    head: "DR. ADETOUN A. OYELUDE",
+    icon: Users,
+    color: "from-purple-500 to-purple-600",
+  },
 ]
 
 const socialLinks = [
@@ -477,7 +485,7 @@ export default function ContactPage() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full h-12 bg-gradient-to-r from-green-600 to-orange-600 hover:from-green-700 hover:to-orange-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
+                  className="w-full h-12 bg-gradient-to-r from-green-600 to-orange-600 hover:from-green-700 hover:to-orange-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
                 >
                   {isSubmitting ? (
                     <motion.div
@@ -507,7 +515,7 @@ export default function ContactPage() {
                 <Button
                   type="button"
                   onClick={() => setShowBookForm(true)}
-                  className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
+                  className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
                 >
                   <BookPlus className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform duration-300" />
                   Recommend a Book
