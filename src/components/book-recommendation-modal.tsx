@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { X, BookOpen, User, Mail, MessageSquare, Send } from "lucide-react"
@@ -26,30 +25,33 @@ export default function BookRecommendationModal({ isOpen, onClose }: BookRecomme
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault()
+  setIsSubmitting(true)
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+  // Log form data to the console
+  console.log("Submitted Book Recommendation:", formData)
 
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+  // Simulate API call
+  await new Promise((resolve) => setTimeout(resolve, 2000))
 
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({
-        name: "",
-        email: "",
-        bookTitle: "",
-        author: "",
-        reason: "",
-        category: "",
-      })
-      onClose()
-    }, 3000)
-  }
+  setIsSubmitting(false)
+  setIsSubmitted(true)
+
+  // Reset form after 3 seconds
+  setTimeout(() => {
+    setIsSubmitted(false)
+    setFormData({
+      name: "",
+      email: "",
+      bookTitle: "",
+      author: "",
+      reason: "",
+      category: "",
+    })
+    onClose()
+  }, 3000)
+}
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -60,20 +62,20 @@ export default function BookRecommendationModal({ isOpen, onClose }: BookRecomme
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-2 sm:p-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
         >
           <motion.div
-            className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[95vh] overflow-y-auto"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="p-6 sm:p-8">
+            <div className="p-4 sm:p-6 md:p-8">
               {/* Header */}
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
@@ -81,8 +83,8 @@ export default function BookRecommendationModal({ isOpen, onClose }: BookRecomme
                     <BookOpen className="h-5 w-5 text-white" />
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-gray-900">Book Recommendation</h2>
-                    <p className="text-gray-600">Suggest a book for our library collection</p>
+                    <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Book Recommendation</h2>
+                    <p className="text-gray-600 text-sm sm:text-base">Suggest a book for our library collection</p>
                   </div>
                 </div>
                 <button
@@ -93,27 +95,28 @@ export default function BookRecommendationModal({ isOpen, onClose }: BookRecomme
                 </button>
               </div>
 
-              {/* Success State */}
-              {isSubmitted && (
-                <motion.div className="text-center py-8" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+              {/* Success Message */}
+              {isSubmitted ? (
+                <motion.div
+                  className="text-center py-8"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Send className="h-8 w-8 text-green-600" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Thank You!</h3>
-                  <p className="text-gray-600">
-                    Your book recommendation has been submitted successfully. We'll review it and consider adding it to
-                    our collection.
+                  <p className="text-gray-600 text-sm sm:text-base">
+                    Your book recommendation has been submitted successfully.
+                    We'll review it and consider adding it to our collection.
                   </p>
                 </motion.div>
-              )}
-
-              {/* Form */}
-              {!isSubmitted && (
+              ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        <User className="h-4 w-4 inline mr-2" />
+                        <User className="h-4 w-4 inline mr-1" />
                         Your Name
                       </label>
                       <Input
@@ -126,7 +129,7 @@ export default function BookRecommendationModal({ isOpen, onClose }: BookRecomme
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        <Mail className="h-4 w-4 inline mr-2" />
+                        <Mail className="h-4 w-4 inline mr-1" />
                         Email Address
                       </label>
                       <Input
@@ -140,10 +143,10 @@ export default function BookRecommendationModal({ isOpen, onClose }: BookRecomme
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        <BookOpen className="h-4 w-4 inline mr-2" />
+                        <BookOpen className="h-4 w-4 inline mr-1" />
                         Book Title
                       </label>
                       <Input
@@ -173,7 +176,7 @@ export default function BookRecommendationModal({ isOpen, onClose }: BookRecomme
                       value={formData.category}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 cursor-pointer"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 cursor-pointer text-sm"
                     >
                       <option value="">Select a category</option>
                       <option value="fiction">Fiction</option>
@@ -190,7 +193,7 @@ export default function BookRecommendationModal({ isOpen, onClose }: BookRecomme
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      <MessageSquare className="h-4 w-4 inline mr-2" />
+                      <MessageSquare className="h-4 w-4 inline mr-1" />
                       Why should we add this book?
                     </label>
                     <textarea
@@ -199,16 +202,16 @@ export default function BookRecommendationModal({ isOpen, onClose }: BookRecomme
                       onChange={handleInputChange}
                       required
                       rows={4}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                      placeholder="Please explain why this book would be valuable for our library collection..."
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm"
+                      placeholder="Explain why this book would be valuable for our library collection..."
                     />
                   </div>
 
-                  <div className="flex gap-4 pt-4">
+                  <div className="flex flex-col sm:flex-row gap-3 pt-4">
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="flex-1 bg-gradient-to-r from-green-600 to-orange-600 hover:from-green-700 hover:to-orange-700 cursor-pointer"
+                      className="flex-1 bg-gradient-to-r from-green-600 to-orange-600 hover:from-green-700 hover:to-orange-700"
                     >
                       {isSubmitting ? (
                         <motion.div
@@ -226,7 +229,13 @@ export default function BookRecommendationModal({ isOpen, onClose }: BookRecomme
                         </>
                       )}
                     </Button>
-                    <Button type="button" variant="outline" onClick={onClose} disabled={isSubmitting} className="cursor-pointer">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={onClose}
+                      disabled={isSubmitting}
+                      className="w-full sm:w-auto"
+                    >
                       Cancel
                     </Button>
                   </div>

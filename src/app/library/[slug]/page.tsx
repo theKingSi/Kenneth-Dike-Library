@@ -181,12 +181,15 @@ const libraryData = {
     },
   },
   medicine: {
-    name: "Faculty of Medicine Library",
-    faculty: "Medicine",
-    image: "/placeholder.svg?height=500&width=800&text=Medicine+Library+Interior",
+    name: "E. Latunde Odeku Medical Library",
+    faculty: "College of Medicine",
+    image: "/libraries/college/odeku.jpg",
     description:
       "The Faculty of Medicine Library is a specialized medical library providing comprehensive resources for medical education, clinical practice, and biomedical research. It operates 24/7 to support the demanding schedules of medical students and healthcare professionals.",
-    location: "College of Medicine Building, University of Ibadan",
+       location: `Queen Elisabeth Road,
+P.M.B. 5017, GPO,
+University College Hospital
+Ibadan`,
     coordinates: "7.3785° N, 3.9460° E",
     books: "32,180",
     journals: "324",
@@ -194,10 +197,10 @@ const libraryData = {
     seatingCapacity: 100,
     studyRooms: 10,
     computerStations: 20,
-    openingHours: "24/7 Access Available",
+    openingHours: "Monday - Friday: 9:00 AM - 8:00 PM, Saturday: 9:00 AM - 12:00 PM",
     contact: {
-      phone: "+234 (0) 2 810 1152",
-      email: "medlibrary@ui.edu.ng",
+      phone: " 08091761085, 08117522327 ",
+      email: "medicallibrary@com.ui.edu.ng",
       librarian: "Dr. Grace A. Ajuwon",
     },
     specialCollections: [

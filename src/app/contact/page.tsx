@@ -47,22 +47,26 @@ export default function ContactPage() {
     restDelta: 0.001,
   })
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault()
+  setIsSubmitting(true)
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+  // ✅ Log the form data to the browser console
+  console.log("Contact Form Submission:", formData)
 
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+  // Simulate API call
+  await new Promise((resolve) => setTimeout(resolve, 2000))
 
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({ name: "", email: "", subject: "", message: "" })
-    }, 3000)
-  }
+  setIsSubmitting(false)
+  setIsSubmitted(true)
+
+  // Reset form after 3 seconds
+  setTimeout(() => {
+    setIsSubmitted(false)
+    setFormData({ name: "", email: "", subject: "", message: "" })
+  }, 3000)
+}
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
