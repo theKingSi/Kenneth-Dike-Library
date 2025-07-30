@@ -44,7 +44,7 @@ const facultyLibraries = [
     id: 3,
     name: "E. Latunde Odeku Medical Library",
     faculty: "College of Medicine",
-    image: "/libraries/college/odeku.jpg",
+    image: "/libraries/College/odeku.jpg",
     description:
       "Medical and health sciences collection with clinical resources, medical journals, and research materials.",
     location: `Queen Elisabeth Road,
