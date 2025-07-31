@@ -28,6 +28,7 @@ import { Card } from "@/components/ui/card"
 import Link from "next/link"
 import BookRecommendationModal from "@/components/book-recommendation-modal"
 import Header from "@/components/header"
+import Footer from "@/components/footer"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -374,6 +375,11 @@ const handleSubmit = async (e: React.FormEvent) => {
 
       {/* Book Recommendation Modal */}
      <BookRecommendationModal isOpen={showBookForm} onClose={() => setShowBookForm(false)} />
+
+
+      {/* Footer and ScrollToTop */}
+      <Footer />
+    
     </div>
   )
 }

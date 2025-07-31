@@ -83,7 +83,7 @@ export default function HistorySection() {
                   label: "Years of Excellence",
                 },
                 {
-                  icon: <Users className="w-8 h-8 text-purple-600 mx-auto mb-2" />,
+                  icon: <Users className="w-8 h-8 text-amber-600 mx-auto mb-2" />,
                   value: "4",
                   label: "Distinguished Leaders",
                 },
@@ -114,7 +114,7 @@ export default function HistorySection() {
               <Link href="/history">
                 <Button
                   size="lg"
-                  className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group"
+                  className="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group"
                 >
                   Discover Full History
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />

@@ -39,7 +39,7 @@ const getStartedItems = [
 
 const eResourcesItems = [
   { name: "E-resources", href: "/e-resources/" },
-  { name: "Print Resources ", href: "/e-resources/journals" },
+  { name: "Print Resources", href: "/print-resources" },
   { name: "SDI Form", href: "https://docs.google.com/forms/d/e/1FAIpQLSe1gvHauaOPO5NOm4PQ6WdDNnZqAdcv2agrrI7L3VetU3oi0w/viewform?usp=header" },
 ]
 
@@ -148,7 +148,7 @@ export default function Header() {
             </DropdownMenu>
 
             {/* Download Button */}
-            <Button className="bg-blue-600 text-white" onClick={handleDownload}>
+            <Button className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-yellow-600 hover:to-amber-600 text-white shadow-lg hover:shadow-xl transition-all duration-300" onClick={handleDownload}>
               Download Guide
             </Button>
           </nav>
@@ -220,7 +220,7 @@ export default function Header() {
 
                 {/* Download Button */}
                 <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: (homeDropdownItems.length + eResourcesItems.length + navItems.length + getStartedItems.length) * 0.1 }} className="pt-4">
-                  <Button className="w-full bg-blue-600 text-white" onClick={handleDownload}>
+                  <Button className="flex items-center gap-2 w-full justify-start bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-yellow-600 hover:to-amber-600 text-white" onClick={handleDownload}>
                     Download Guide
                   </Button>
                 </motion.div>

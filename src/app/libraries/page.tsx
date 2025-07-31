@@ -1,13 +1,23 @@
 "use client"
 
 import { motion, useScroll, useSpring } from "framer-motion"
-import { ArrowLeft, MapPin, BookOpen, Users, Clock, ExternalLink, Search, Filter } from "lucide-react"
+import {
+  ArrowLeft,
+  MapPin,
+  BookOpen,
+  Users,
+  Clock,
+  ExternalLink,
+  Search,
+  Filter,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import { useState } from "react"
 import Header from "@/components/header"
 import ScrollToTop from "@/components/scroll-to-top"
+import Footer from "@/components/footer"
 
 const facultyLibraries = [
   {
@@ -482,13 +492,18 @@ export default function LibrariesPage() {
           </motion.div>
         )}
       </div>
+
+      {/* Footer and ScrollToTop */}
+      <div className="mt-16">
+        <Footer />
+        <ScrollToTop />
+      </div>
     </div>
   )
 }
 
 function LibraryCard({ library, index }: { library: any; index: number }) {
   return (
-    <>
     <motion.div
       className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-2xl transition-all duration-500"
       initial={{ opacity: 0, y: 50 }}
@@ -547,13 +562,8 @@ function LibraryCard({ library, index }: { library: any; index: number }) {
         </Link>
       </div>
 
-      {/* Hover Effect Border */}
-      <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-green-200 transition-colors duration-300 pointer-events-none"></div>
+      {/* Hover Border */}
+      <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-green-200 transition-colors duration-300 pointer-events-none" />
     </motion.div>
-
-     
-          <ScrollToTop />
-    
-        </>
   )
 }

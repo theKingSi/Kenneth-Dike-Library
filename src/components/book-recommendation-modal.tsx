@@ -59,6 +59,7 @@ export default function BookRecommendationModal({ isOpen, onClose }: BookRecomme
   }
 
   return (
+    <section id="Recommend">
     <AnimatePresence>
       {isOpen && (
         <motion.div
@@ -246,5 +247,6 @@ export default function BookRecommendationModal({ isOpen, onClose }: BookRecomme
         </motion.div>
       )}
     </AnimatePresence>
+    </section>
   )
 }

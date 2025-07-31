@@ -1,49 +1,71 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Calendar, ArrowRight, Zap, Users, BookOpen } from "lucide-react"
+import { Calendar, Users, BookOpen, Award, ArrowRight, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
 
 const announcements = [
   {
-    title: "Extended Hours During Finals Week",
-    snippet: "The library will be open 24/7 from December 10-17 to support students during final examinations.",
-    date: "December 5, 2024",
-    category: "Hours",
-    icon: Calendar,
-    color: "from-blue-500 to-blue-600",
-    href: "#announcement-1",
-  },
-  {
-    title: "New Digital Archive Collection",
-    snippet: "Explore our newly digitized historical manuscripts and rare books collection now available online.",
-    date: "November 28, 2024",
-    category: "Resources",
+    id: 1,
+    type: "Event",
+    title: "Digital Literacy Workshop",
+    description: "Join us for an intensive workshop on navigating digital databases and research tools.",
+    date: "2024-02-15",
+    time: "10:00 AM - 2:00 PM",
+    location: "Main Library, Conference Room A",
     icon: BookOpen,
-    color: "from-purple-500 to-purple-600",
-    href: "#announcement-2",
+    color: "from-indigo-500 to-blue-600",
+    bgColor: "bg-indigo-50",
+    borderColor: "border-indigo-200",
+    textColor: "text-indigo-700",
   },
   {
-    title: "Research Workshop Series",
-    snippet: "Join our weekly workshops on advanced research techniques and citation management tools.",
-    date: "November 20, 2024",
-    category: "Events",
+    id: 2,
+    type: "News",
+    title: "New E-Resource Database Added",
+    description: "We've added access to SpringerLink, expanding our digital collection by 2 million articles.",
+    date: "2024-02-10",
+    location: "Available 24/7 online",
+    icon: Award,
+    color: "from-blue-500 to-indigo-600",
+    bgColor: "bg-blue-50",
+    borderColor: "border-blue-200",
+    textColor: "text-blue-700",
+  },
+  {
+    id: 3,
+    type: "Update",
+    title: "Extended Study Hours",
+    description: "During exam period, the library will be open 24/7 from March 1st to March 31st.",
+    date: "2024-02-08",
+    location: "All library locations",
+    icon: Clock,
+    color: "from-amber-500 to-yellow-500",
+    bgColor: "bg-amber-50",
+    borderColor: "border-amber-200",
+    textColor: "text-amber-700",
+  },
+  {
+    id: 4,
+    type: "Event",
+    title: "Research Excellence Awards",
+    description: "Celebrating outstanding research achievements by our faculty and graduate students.",
+    date: "2024-02-20",
+    time: "6:00 PM - 8:00 PM",
+    location: "Library Auditorium",
     icon: Users,
-    color: "from-green-500 to-green-600",
-    href: "#announcement-3",
+    color: "from-indigo-600 to-blue-500",
+    bgColor: "bg-indigo-50",
+    borderColor: "border-indigo-200",
+    textColor: "text-indigo-700",
   },
 ]
 
 export default function Announcements() {
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-200 rounded-full opacity-20 blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-200 rounded-full opacity-20 blur-3xl"></div>
-      </div>
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <section className="py-20 bg-gradient-to-br from-white via-indigo-50 to-blue-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -52,102 +74,97 @@ export default function Announcements() {
           viewport={{ once: true }}
         >
           <motion.div
-            className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-4"
+            className="inline-flex items-center px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full text-sm font-medium mb-6"
             initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
           >
-            <Zap className="w-4 h-4 mr-2" />
+            <Calendar className="w-4 h-4 mr-2" />
             Latest Updates
           </motion.div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            What's{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-              Happening
+            News &{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-600">
+              Announcements
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Stay connected with the latest news, events, and important updates from UI Library
+            Stay updated with the latest events, news, and important information from Kenneth Dike Library
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {announcements.map((announcement, index) => (
-            <motion.article
-              key={announcement.title}
-              className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden"
+            <motion.div
+              key={announcement.id}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ y: -10, scale: 1.02 }}
             >
-              {/* Gradient Background */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${announcement.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
-              ></div>
-
-              {/* Icon */}
-              <motion.div
-                className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br ${announcement.color} mb-6 shadow-lg`}
-                whileHover={{ rotate: 360, scale: 1.1 }}
-                transition={{ duration: 0.6 }}
+              <Card
+                className={`p-6 h-full ${announcement.bgColor} ${announcement.borderColor} border-2 hover:shadow-xl transition-all duration-300 group`}
               >
-                <announcement.icon className="h-7 w-7 text-white" />
-              </motion.div>
+                <div className="flex items-start justify-between mb-4">
+                  <div
+                    className={`w-12 h-12 bg-gradient-to-r ${announcement.color} rounded-xl flex items-center justify-center shadow-lg`}
+                  >
+                    <announcement.icon className="h-6 w-6 text-white" />
+                  </div>
+                  <div className="text-right">
+                    <span
+                      className={`inline-block px-3 py-1 ${announcement.bgColor} ${announcement.textColor} text-xs font-semibold rounded-full border ${announcement.borderColor}`}
+                    >
+                      {announcement.type}
+                    </span>
+                  </div>
+                </div>
 
-              {/* Category Badge */}
-              <div className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium mb-4">
-                {announcement.category}
-              </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors duration-300">
+                  {announcement.title}
+                </h3>
 
-              {/* Date */}
-              <div className="flex items-center text-sm text-gray-500 mb-4">
-                <Calendar className="h-4 w-4 mr-2" />
-                {announcement.date}
-              </div>
+                <p className="text-gray-700 leading-relaxed mb-4">{announcement.description}</p>
 
-              {/* Content */}
-              <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300 leading-tight">
-                {announcement.title}
-              </h3>
+                <div className="space-y-2 mb-6">
+                  <div className="flex items-center text-sm text-gray-600">
+                    <Calendar className="h-4 w-4 mr-2 text-indigo-500" />
+                    <span>
+                      {new Date(announcement.date).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </span>
+                  </div>
 
-              <p className="text-gray-600 mb-6 leading-relaxed line-clamp-3">{announcement.snippet}</p>
+                  {announcement.time && (
+                    <div className="flex items-center text-sm text-gray-600">
+                      <Clock className="h-4 w-4 mr-2 text-blue-500" />
+                      <span>{announcement.time}</span>
+                    </div>
+                  )}
 
-              {/* Read More Link */}
-              <motion.a
-                href={announcement.href}
-                className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold group/link"
-                whileHover={{ x: 5 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                Read full article
-                <ArrowRight className="ml-2 h-4 w-4 group-hover/link:translate-x-1 transition-transform duration-300" />
-              </motion.a>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <Users className="h-4 w-4 mr-2 text-amber-500" />
+                    <span>{announcement.location}</span>
+                  </div>
+                </div>
 
-              {/* Hover Effect Border */}
-              <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-blue-200 transition-colors duration-300"></div>
-            </motion.article>
+                <Button
+                  variant="outline"
+                  className={`w-full group-hover:bg-gradient-to-r group-hover:${announcement.color} group-hover:text-white group-hover:border-transparent transition-all duration-300`}
+                >
+                  Learn More
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+                </Button>
+              </Card>
+            </motion.div>
           ))}
         </div>
 
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <Button
-           
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
-          >
-            View All Announcements
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-          </Button>
-        </motion.div>
       </div>
     </section>
   )
