@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight, Users, BookOpen, ChevronLeft, ChevronRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { ChevronLeft, ChevronRight, BookOpen } from "lucide-react"
 import Link from "next/link"
 
 const heroSlides = [
@@ -13,8 +12,6 @@ const heroSlides = [
     title: "Discover Knowledge Beyond Limits",
     subtitle: "Step into a world where tradition meets innovation",
     description: "Our library is more than books—it's your gateway to endless possibilities and academic excellence.",
-    cta: "Explore Our Story",
-    ctaLink: "/history",
     stats: { resources: "2.5M+", students: "45K+", access: "24/7" },
   },
   {
@@ -23,8 +20,6 @@ const heroSlides = [
     title: "Modern Learning Spaces",
     subtitle: "Where comfort meets productivity",
     description: "Experience state-of-the-art study environments designed for collaboration, focus, and innovation.",
-    cta: "Book Study Room",
-    ctaLink: "#booking",
     stats: { rooms: "150+", seats: "2000+", hours: "24/7" },
   },
   {
@@ -33,8 +28,6 @@ const heroSlides = [
     title: "Digital Excellence",
     subtitle: "Access the world's knowledge",
     description: "Explore millions of digital resources, databases, and e-books from anywhere, anytime.",
-    cta: "Browse Resources",
-    ctaLink: "#resources",
     stats: { databases: "500+", ebooks: "1M+", journals: "50K+" },
   },
   {
@@ -43,8 +36,6 @@ const heroSlides = [
     title: "Research Support",
     subtitle: "Expert guidance for your journey",
     description: "Get personalized research assistance from our expert librarians and subject specialists.",
-    cta: "Get Help",
-    ctaLink: "#research-help",
     stats: { librarians: "25+", consultations: "5K+", success: "98%" },
   },
 ]
@@ -55,11 +46,9 @@ export default function Hero() {
 
   useEffect(() => {
     if (!isAutoPlaying) return
-
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
     }, 6000)
-
     return () => clearInterval(interval)
   }, [isAutoPlaying])
 
@@ -81,8 +70,8 @@ export default function Hero() {
   const currentSlideData = heroSlides[currentSlide]
 
   return (
-    <section className="relative min-h-screen overflow-hidden group">
-      {/* Background Images with Parallax Effect */}
+    <section className="relative min-h-[92vh] overflow-hidden group">
+      {/* Background */}
       <div className="absolute inset-0">
         <AnimatePresence mode="wait">
           <motion.div
@@ -94,7 +83,7 @@ export default function Hero() {
             transition={{ duration: 1.5, ease: "easeInOut" }}
           >
             <img
-              src={currentSlideData.image || "/placeholder.svg"}
+              src={currentSlideData.image}
               alt={currentSlideData.title}
               className="w-full h-full object-cover"
             />
@@ -104,22 +93,22 @@ export default function Hero() {
         </AnimatePresence>
       </div>
 
-      {/* Animated Background Elements */}
+      {/* Animated Blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-20 left-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"
+          className="absolute top-20 left-20 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl"
           animate={{ x: [0, 100, 0], y: [0, -50, 0], scale: [1, 1.2, 1] }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"
+          className="absolute bottom-20 right-20 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl"
           animate={{ x: [0, -80, 0], y: [0, 60, 0], scale: [1, 0.8, 1] }}
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
 
-      {/* Content Overlay */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
+      {/* Slide Content */}
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 min-h-[80vh] flex items-center">
         <div className="max-w-4xl">
           <AnimatePresence mode="wait">
             <motion.div
@@ -130,7 +119,7 @@ export default function Hero() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="text-white space-y-8"
             >
-              {/* Main Title */}
+              {/* Title */}
               <motion.h1
                 className="text-5xl md:text-7xl lg:text-6xl font-bold leading-tight"
                 initial={{ opacity: 0, y: 30 }}
@@ -142,7 +131,7 @@ export default function Hero() {
                     key={index}
                     className={
                       index >= currentSlideData.title.split(" ").length - 2
-                        ? "text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400"
+                        ? "text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-blue-400 to-yellow-400"
                         : ""
                     }
                     initial={{ opacity: 0, y: 20 }}
@@ -174,33 +163,7 @@ export default function Hero() {
                 {currentSlideData.description}
               </motion.p>
 
-              {/* CTA Buttons */}
-              <motion.div
-                className="flex flex-col sm:flex-row gap-6"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.2 }}
-              >
-                <Link href={currentSlideData.ctaLink}>
-                  <Button
-                    size="lg"
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
-                  >
-                    {currentSlideData.cta}
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Button>
-                </Link>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white/30 text-white hover:bg-white/10 px-8 py-4 rounded-2xl backdrop-blur-sm cursor-pointer"
-                >
-                  <Users className="mr-2 h-5 w-5" />
-                  Join Community
-                </Button>
-              </motion.div>
-
-              {/* Dynamic Stats */}
+              {/* Stats */}
               <motion.div
                 className="flex gap-12 pt-8"
                 initial={{ opacity: 0, y: 20 }}
@@ -215,10 +178,12 @@ export default function Hero() {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6, delay: 1.6 + index * 0.1 }}
                   >
-                    <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                    <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-blue-400 to-yellow-400">
                       {value}
                     </div>
-                    <div className="text-sm text-gray-400 capitalize">{key.replace(/([A-Z])/g, " $1")}</div>
+                    <div className="text-sm text-gray-400 capitalize">
+                      {key.replace(/([A-Z])/g, " $1")}
+                    </div>
                   </motion.div>
                 ))}
               </motion.div>
@@ -232,12 +197,13 @@ export default function Hero() {
         <div className="flex items-center space-x-4">
           <motion.button
             onClick={prevSlide}
-            className="w-12 h-12 rounded-full bg-white/10 cursor-pointer backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
+            className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
             <ChevronLeft className="w-6 h-6" />
           </motion.button>
+
           <div className="flex space-x-2">
             {heroSlides.map((_, index) => (
               <motion.button
@@ -251,9 +217,10 @@ export default function Hero() {
               />
             ))}
           </div>
+
           <motion.button
             onClick={nextSlide}
-            className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center cursor-pointer text-white hover:bg-white/20 transition-all duration-300"
+            className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
@@ -262,24 +229,26 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Progress Bar - Hidden by default, shown on hover of entire section */}
+      {/* Progress Bar */}
       <div className="absolute bottom-0 left-0 w-full h-1 bg-white/20 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <motion.div
-          className="h-full bg-gradient-to-r from-blue-400 to-purple-400"
+          className="h-full bg-gradient-to-r from-indigo-500 via-blue-500 to-yellow-400"
           initial={{ width: "0%" }}
-          animate={{ width: isAutoPlaying ? "100%" : `${((currentSlide + 1) / heroSlides.length) * 100}%` }}
+          animate={{
+            width: isAutoPlaying ? "100%" : `${((currentSlide + 1) / heroSlides.length) * 100}%`,
+          }}
           transition={{ duration: isAutoPlaying ? 6 : 0.5, ease: "linear" }}
         />
       </div>
 
       {/* Floating Book Icon */}
       <motion.div
-        className="absolute top-1/2 right-8 transform -translate-y-1/2 w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20 z-20"
+        className="hidden md:flex absolute top-1/2 right-8 transform -translate-y-1/2 w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full items-center justify-center border border-white/20 z-20"
         animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
       >
-      <Link href="/e-resources">
-        <BookOpen className="w-8 h-8 text-white" />
+        <Link href="/e-resources">
+          <BookOpen className="w-8 h-8 text-white" />
         </Link>
       </motion.div>
     </section>

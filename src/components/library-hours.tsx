@@ -27,22 +27,7 @@ const libraryHours = [
   },
 ]
 
-const specialHours = [
-  {
-    period: "Exam Period",
-    dates: "March 1 - March 31, 2024",
-    hours: "24/7 Access Available",
-    note: "Extended hours for all study areas",
-    color: "from-indigo-500 to-blue-600",
-  },
-  {
-    period: "Holiday Break",
-    dates: "December 20 - January 5, 2024",
-    hours: "9:00 AM - 5:00 PM",
-    note: "Limited services available",
-    color: "from-amber-500 to-yellow-500",
-  },
-]
+
 
 export default function LibraryHours() {
   const currentTime = new Date()
@@ -86,7 +71,7 @@ export default function LibraryHours() {
             Visit Us
           </motion.div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6z">
             Library{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-600">Hours</span>
           </h2>
@@ -104,7 +89,7 @@ export default function LibraryHours() {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <Card className="p-6 h-full bg-gradient-to-br from-indigo-500 to-blue-600 text-white shadow-xl">
+            <Card className="p-6 h-full bg-gradient-to-br from-indigo-900 to-blue-900 text-white shadow-xl">
               <div className="text-center">
                 <motion.div
                   className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6"
@@ -149,7 +134,7 @@ export default function LibraryHours() {
                   </div>
                   <div className="flex items-center justify-center text-indigo-100">
                     <MapPin className="h-4 w-4 mr-2" />
-                    <span className="text-sm">University of Ibadan</span>
+                    <span className="text-sm">Kenneth Dike Library University of Ibadan.</span>
                   </div>
                 </div>
               </div>
